@@ -6,10 +6,10 @@ export function ExperienceSection() {
   const experiences = [
     {
       title: "Support Engineer",
-      company: "Bayanat Smart System",
+      company: "Bayanat Smart Systems",
       type: "Full-time",
       location: "RAK, UAE",
-      period: "March 2025 – Present",
+      period: "March 2025 - Present",
       description:
         "Leading technical support and system optimization initiatives for smart tracking and access control systems.",
       achievements: [
@@ -27,7 +27,7 @@ export function ExperienceSection() {
       company: "Telecom Egypt",
       type: "Full-time",
       location: "Alexandria, Egypt",
-      period: "Nov 2020 – Jan 2025",
+      period: "Nov 2020 - Jan 2025",
       description:
         "Provided comprehensive technical support for networking infrastructure and customer connectivity solutions.",
       achievements: [
@@ -50,7 +50,7 @@ export function ExperienceSection() {
       company: "Smart Serve",
       type: "Remote",
       location: "Remote",
-      period: "Feb 2024 – Aug 2024",
+      period: "Feb 2024 - Aug 2024",
       description:
         "Designed and implemented scalable backend architectures for web applications with focus on performance and security.",
       achievements: [

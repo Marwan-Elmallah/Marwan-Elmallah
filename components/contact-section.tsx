@@ -74,7 +74,7 @@ export function ContactSection() {
     {
       icon: MapPin,
       label: "Location",
-      value: "RAK, UAE",
+      value: "United Arab Emirates",
       href: null,
     },
   ]
@@ -111,7 +111,6 @@ export function ContactSection() {
                 infrastructure setup, or technical support needs. Feel free to reach out through any of the channels
                 below.
               </p>
-
               <div className="space-y-4">
                 {contactInfo.map((info, index) => {
                   const IconComponent = info.icon
