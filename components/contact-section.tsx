@@ -111,6 +111,7 @@ export function ContactSection() {
   ]
 
   const serviceTypes = [
+    "Fullstack Development",
     "Backend Development",
     "Cloud Solutions",
     "Network Support",
