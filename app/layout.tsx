@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: "Marwan Elmallah - Fullstack JavaScript Developer & Backend Engineer",
   description:
     "Marwan Elmallah - Expert Fullstack JavaScript Developer, Backend Engineer, and Technical Support Specialist. 4+ years experience in Node.js, React, AWS, and cloud technologies. Professional IT solutions and fullstack development services.",
-  generator: "v0.app",
+  generator: "",
   keywords: [
     "Marwan Elmallah",
     "fullstack developer",
