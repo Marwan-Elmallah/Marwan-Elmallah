@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import { Mail, Phone, Linkedin, MapPin, Send, Clock, Globe, CheckCircle, Github } from "lucide-react"
+import { Mail, Phone, Linkedin, MapPin, Send, Clock, Globe, CheckCircle, Github, Loader2 } from "lucide-react"
+import { useToast } from "@/hooks/use-toast"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -21,28 +22,52 @@ export function ContactSection() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const { toast } = useToast()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-
-    // Reset form after 3 seconds
-    setTimeout(() => {
-      setIsSubmitted(false)
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
-        serviceType: "",
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       })
-    }, 3000)
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        toast({
+          title: "Message sent!",
+          description: "Thank you for reaching out. I'll get back to you within 24 hours.",
+        })
+
+        // Reset form after 3 seconds
+        setTimeout(() => {
+          setIsSubmitted(false)
+          setFormData({
+            name: "",
+            email: "",
+            subject: "",
+            message: "",
+            serviceType: "",
+          })
+        }, 3000)
+      } else {
+        const error = await response.json()
+        throw new Error(error.error || "Failed to send message")
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Failed to send message. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -201,6 +226,7 @@ export function ContactSection() {
                         value={formData.name}
                         onChange={handleInputChange}
                         placeholder="Your full name"
+                        disabled={isSubmitting}
                       />
                     </div>
                     <div>
@@ -215,6 +241,7 @@ export function ContactSection() {
                         value={formData.email}
                         onChange={handleInputChange}
                         placeholder="your.email@example.com"
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
@@ -229,6 +256,7 @@ export function ContactSection() {
                       value={formData.serviceType}
                       onChange={handleInputChange}
                       className="w-full px-3 py-2 border border-input bg-background rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
+                      disabled={isSubmitting}
                     >
                       <option value="">Select a service type</option>
                       {serviceTypes.map((service) => (
@@ -251,6 +279,7 @@ export function ContactSection() {
                       value={formData.subject}
                       onChange={handleInputChange}
                       placeholder="Brief description of your project"
+                      disabled={isSubmitting}
                     />
                   </div>
 
@@ -266,13 +295,14 @@ export function ContactSection() {
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Tell me more about your project requirements, timeline, and any specific needs..."
+                      disabled={isSubmitting}
                     />
                   </div>
 
                   <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
                     {isSubmitting ? (
                       <>
-                        <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" />
+                        <Loader2 className="mr-2 h-4 w-4 animate-spin" />
                         Sending...
                       </>
                     ) : (

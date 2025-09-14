@@ -2,14 +2,15 @@
 
 import type React from "react"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import { Star, MessageSquare, User, Calendar } from "lucide-react"
+import { Star, MessageSquare, User, Calendar, Loader2 } from "lucide-react"
+import { useToast } from "@/hooks/use-toast"
 
 interface Feedback {
   id: string
@@ -17,31 +18,16 @@ interface Feedback {
   email: string
   rating: number
   message: string
-  date: string
+  createdAt: string
   type: "general" | "project" | "service"
+  approved: boolean
 }
 
 export function FeedbackSection() {
-  const [feedbacks, setFeedbacks] = useState<Feedback[]>([
-    {
-      id: "1",
-      name: "Sarah Johnson",
-      email: "sarah@example.com",
-      rating: 5,
-      message: "Excellent work on the backend development project. Very professional and delivered on time.",
-      date: "2024-01-15",
-      type: "project",
-    },
-    {
-      id: "2",
-      name: "Mike Chen",
-      email: "mike@example.com",
-      rating: 4,
-      message: "Great IT support and cloud migration assistance. Highly recommend!",
-      date: "2024-01-10",
-      type: "service",
-    },
-  ])
+  const [feedbacks, setFeedbacks] = useState<Feedback[]>([])
+  const [loading, setLoading] = useState(true)
+  const [submitting, setSubmitting] = useState(false)
+  const { toast } = useToast()
 
   const [formData, setFormData] = useState({
     name: "",
@@ -51,25 +37,64 @@ export function FeedbackSection() {
     type: "general" as "general" | "project" | "service",
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+  useEffect(() => {
+    fetchFeedback()
+  }, [])
 
-    const newFeedback: Feedback = {
-      id: Date.now().toString(),
-      ...formData,
-      date: new Date().toISOString().split("T")[0],
+  const fetchFeedback = async () => {
+    try {
+      const response = await fetch("/api/feedback?approved=true")
+      if (response.ok) {
+        const data = await response.json()
+        setFeedbacks(data.feedback || [])
+      }
+    } catch (error) {
+      console.error("Failed to fetch feedback:", error)
+    } finally {
+      setLoading(false)
     }
+  }
 
-    setFeedbacks([newFeedback, ...feedbacks])
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubmitting(true)
 
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      rating: 5,
-      message: "",
-      type: "general",
-    })
+    try {
+      const response = await fetch("/api/feedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        toast({
+          title: "Feedback submitted!",
+          description: "Thank you for your feedback. It will be reviewed before being published.",
+        })
+
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          rating: 5,
+          message: "",
+          type: "general",
+        })
+      } else {
+        const error = await response.json()
+        throw new Error(error.error || "Failed to submit feedback")
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: error instanceof Error ? error.message : "Failed to submit feedback. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   const renderStars = (rating: number) => {
@@ -119,6 +144,7 @@ export function FeedbackSection() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       required
+                      disabled={submitting}
                     />
                   </div>
                   <div>
@@ -129,6 +155,7 @@ export function FeedbackSection() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       required
+                      disabled={submitting}
                     />
                   </div>
                 </div>
@@ -140,6 +167,7 @@ export function FeedbackSection() {
                     value={formData.type}
                     onChange={(e) => setFormData({ ...formData, type: e.target.value as any })}
                     className="w-full p-2 border border-input bg-background rounded-md"
+                    disabled={submitting}
                   >
                     <option value="general">General</option>
                     <option value="project">Project Work</option>
@@ -156,6 +184,7 @@ export function FeedbackSection() {
                         type="button"
                         onClick={() => setFormData({ ...formData, rating: i + 1 })}
                         className="p-1"
+                        disabled={submitting}
                       >
                         <Star
                           className={`w-6 h-6 ${
@@ -178,11 +207,19 @@ export function FeedbackSection() {
                     placeholder="Share your experience..."
                     rows={4}
                     required
+                    disabled={submitting}
                   />
                 </div>
 
-                <Button type="submit" className="w-full">
-                  Submit Feedback
+                <Button type="submit" className="w-full" disabled={submitting}>
+                  {submitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      Submitting...
+                    </>
+                  ) : (
+                    "Submit Feedback"
+                  )}
                 </Button>
               </form>
             </CardContent>
@@ -191,7 +228,14 @@ export function FeedbackSection() {
           {/* Feedback List */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold mb-4">Recent Feedback</h3>
-            {feedbacks.length === 0 ? (
+            {loading ? (
+              <Card>
+                <CardContent className="p-6 text-center">
+                  <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2" />
+                  <p className="text-muted-foreground">Loading feedback...</p>
+                </CardContent>
+              </Card>
+            ) : feedbacks.length === 0 ? (
               <Card>
                 <CardContent className="p-6 text-center text-muted-foreground">
                   No feedback yet. Be the first to share your experience!
@@ -210,7 +254,7 @@ export function FeedbackSection() {
                           <h4 className="font-semibold">{feedback.name}</h4>
                           <div className="flex items-center gap-2 text-sm text-muted-foreground">
                             <Calendar className="w-3 h-3" />
-                            {new Date(feedback.date).toLocaleDateString()}
+                            {new Date(feedback.createdAt).toLocaleDateString()}
                           </div>
                         </div>
                       </div>

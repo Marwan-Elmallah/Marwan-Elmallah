@@ -1,0 +1,65 @@
+import { type NextRequest, NextResponse } from "next/server"
+
+// This would be imported from a shared data store in production
+declare global {
+  var feedbackData: Array<{
+    id: string
+    name: string
+    email: string
+    message: string
+    rating: number
+    createdAt: string
+    approved: boolean
+  }>
+}
+
+export async function PATCH(request: NextRequest, { params }: { params: { id: string } }) {
+  try {
+    const { id } = params
+    const body = await request.json()
+    const { approved } = body
+
+    // Find and update feedback
+    const feedbackIndex = globalThis.feedbackData?.findIndex((item) => item.id === id) ?? -1
+
+    if (feedbackIndex === -1) {
+      return NextResponse.json({ error: "Feedback not found" }, { status: 404 })
+    }
+
+    if (globalThis.feedbackData) {
+      globalThis.feedbackData[feedbackIndex].approved = approved
+    }
+
+    return NextResponse.json({
+      message: "Feedback updated successfully",
+      feedback: globalThis.feedbackData?.[feedbackIndex],
+    })
+  } catch (error) {
+    console.error("Feedback update error:", error)
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
+  }
+}
+
+export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+  try {
+    const { id } = params
+
+    if (!globalThis.feedbackData) {
+      return NextResponse.json({ error: "No feedback data found" }, { status: 404 })
+    }
+
+    const initialLength = globalThis.feedbackData.length
+    globalThis.feedbackData = globalThis.feedbackData.filter((item) => item.id !== id)
+
+    if (globalThis.feedbackData.length === initialLength) {
+      return NextResponse.json({ error: "Feedback not found" }, { status: 404 })
+    }
+
+    return NextResponse.json({
+      message: "Feedback deleted successfully",
+    })
+  } catch (error) {
+    console.error("Feedback deletion error:", error)
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
+  }
+}

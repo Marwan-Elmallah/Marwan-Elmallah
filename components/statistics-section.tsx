@@ -5,6 +5,7 @@ import type React from "react"
 import { useEffect, useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Users, Code, Clock, Award } from "lucide-react"
+import { useAnalytics } from "@/hooks/use-analytics"
 
 interface StatisticProps {
   icon: React.ReactNode
@@ -59,6 +60,8 @@ function StatisticCard({ icon, value, label, suffix }: StatisticProps) {
 }
 
 export function StatisticsSection() {
+  const { data: analytics } = useAnalytics(30) // Get 30 days of data
+
   return (
     <section id="statistics" className="py-20 bg-muted/30">
       <div className="container mx-auto px-4">
@@ -74,7 +77,7 @@ export function StatisticsSection() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <StatisticCard
             icon={<Users className="w-8 h-8 text-primary" />}
-            value={1250}
+            value={analytics?.totalVisitors || 1250}
             suffix="+"
             label="Site Visitors"
           />

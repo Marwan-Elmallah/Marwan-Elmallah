@@ -5,13 +5,14 @@ import { GeistMono } from "geist/font/mono"
 import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
+import VisitorTracker from "@/components/visitor-tracker"
 import "./globals.css"
 
 export const metadata: Metadata = {
   title: "Marwan Elmallah - Fullstack JavaScript Developer & Backend Engineer",
   description:
     "Marwan Elmallah - Expert Fullstack JavaScript Developer, Backend Engineer, and Technical Support Specialist. 4+ years experience in Node.js, React, AWS, and cloud technologies. Professional IT solutions and fullstack development services.",
-  generator: "",
+  generator: "v0.app",
   keywords: [
     "Marwan Elmallah",
     "fullstack developer",
@@ -122,6 +123,7 @@ export default function RootLayout({
       </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+          <VisitorTracker />
           <Suspense fallback={null}>{children}</Suspense>
           <Analytics />
         </ThemeProvider>

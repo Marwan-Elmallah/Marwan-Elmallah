@@ -79,7 +79,7 @@ export function Navigation() {
                     <div className="text-center">
                       <div className="font-semibold">Marwan Elmallah</div>
                       <div className="text-xs text-muted-foreground">Egyptian • Single</div>
-                      <div className="text-xs text-muted-foreground">Full Stack Developer</div>
+                      <div className="text-xs text-muted-foreground">Backend Developer</div>
                     </div>
                     {/* Tooltip arrow */}
                     <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-popover border-l border-t rotate-45"></div>
@@ -89,7 +89,7 @@ export function Navigation() {
 
               <button
                 onClick={() => scrollToSection("home")}
-                className="text-xl font-bold text-primary hover:text-primary/80 transition-colors"
+                className="text-xl font-bold text-foreground hover:text-primary focus:text-primary focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-sm px-1 py-1 transition-colors"
               >
                 Marwan Elmallah
               </button>
@@ -103,10 +103,10 @@ export function Navigation() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 ${
                     activeSection === item.id
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      ? "text-primary-foreground bg-primary"
+                      : "text-foreground hover:text-primary hover:bg-muted"
                   }`}
                 >
                   {item.label}
@@ -133,10 +133,10 @@ export function Navigation() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
+                  className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 ${
                     activeSection === item.id
-                      ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                      ? "text-primary-foreground bg-primary"
+                      : "text-foreground hover:text-primary hover:bg-muted"
                   }`}
                 >
                   {item.label}
