@@ -27,6 +27,7 @@ export function SkillsSection() {
         { name: "React.js", level: 85 },
         { name: "Next.js", level: 82 },
         { name: "Nest.js", level: 75 },
+        { name: "Strapi", level: 80 },
       ],
     },
     {
@@ -46,10 +47,11 @@ export function SkillsSection() {
       color: "text-chart-1",
       bgColor: "bg-chart-1/10",
       skills: [
-        { name: "AWS (EC2, S3, IAM)", level: 75 },
         { name: "Render", level: 85 },
         { name: "cPanel", level: 90 },
         { name: "Hostinger", level: 88 },
+        { name: "AWS (EC2, S3, IAM)", level: 75 },
+        { name: "Digital Ocean", level: 70 }
       ],
     },
     {
@@ -59,6 +61,7 @@ export function SkillsSection() {
       bgColor: "bg-chart-2/10",
       skills: [
         { name: "Network Troubleshooting", level: 92 },
+        { name: "Network Devices Configuration", level: 90 },
         { name: "Router Configuration", level: 88 },
         { name: "Fiber Optics", level: 85 },
         { name: "Static IPs", level: 90 },

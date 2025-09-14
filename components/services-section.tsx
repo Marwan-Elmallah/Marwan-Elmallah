@@ -8,7 +8,7 @@ import { Code, Cloud, Network, Headphones, Database, Settings, MapPin, Wifi, Che
 export function ServicesSection() {
   const services = [
     {
-      title: "Fullstack Development",
+      title: "Full Stack Development",
       description: "End-to-end web solutions combining robust backend systems with dynamic, responsive frontends for seamless user experiences.",
       icon: Code,
       color: "text-primary",
@@ -26,7 +26,7 @@ export function ServicesSection() {
       technologies: [
         "Node.js", "Express.js", "Nest.js", 
         "Strapi", "MySQL", "Socket.io",
-        "MongoDB", "PostgreSQL", "Firebase",
+        "MongoDB", "PostgreSQL", "Bootstrap",
         "React.js", "Next.js", "Tailwind CSS", 
       ],
     },
@@ -60,7 +60,7 @@ export function ServicesSection() {
         "Static IP Configuration",
         "Wireless Network Setup",
       ],
-      technologies: ["Fiber Optics", "ONT", "Static IPs", "Routers", "Access Points"],
+      technologies: ["Fiber Optics", "ONT", "Static IPs", "Routers", "Access Points", "Switches", "Repeaters"],
     },
     {
       title: "Cloud Solutions",
@@ -76,7 +76,7 @@ export function ServicesSection() {
         "Security Implementation",
         "Cost Optimization",
       ],
-      technologies: ["AWS EC2", "AWS S3", "AWS IAM", "Render", "cPanel", "Hostinger"],
+      technologies: ["cPanel", "Render", "Hostinger", "Digital Ocean" ,"AWS EC2", "AWS S3", "AWS IAM"],
     },
     {
       title: "Database Management",
