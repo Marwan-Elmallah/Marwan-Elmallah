@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import { Mail, Phone, Linkedin, MapPin, Send, Clock, Globe, CheckCircle } from "lucide-react"
+import { Mail, Phone, Linkedin, MapPin, Send, Clock, Globe, CheckCircle, Github } from "lucide-react"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -70,6 +70,12 @@ export function ContactSection() {
       label: "LinkedIn",
       value: "linkedin.com/in/marwan-elmallah",
       href: "https://linkedin.com/in/marwan-elmallah",
+    },
+    {
+      icon: Github,
+      label: "GitHub",
+      value: "github.com/marwan-elmallah",
+      href: "https://github.com/marwan-elmallah",
     },
     {
       icon: MapPin,

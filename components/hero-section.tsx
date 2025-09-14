@@ -2,7 +2,8 @@
 
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ArrowDown, Download, Mail, Phone, Linkedin } from "lucide-react"
+import { ArrowDown, Download, Mail, Phone, Linkedin, Github } from "lucide-react"
+import Image from "next/image"
 
 export function HeroSection() {
   const scrollToAbout = () => {
@@ -12,6 +13,15 @@ export function HeroSection() {
     }
   }
 
+  const downloadCV = () => {
+    const link = document.createElement("a")
+    link.href = "/assets/marwan-elmallah-cv.pdf"
+    link.download = "Marwan_Elmallah_CV.pdf"
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
   return (
     <section
       id="home"
@@ -19,9 +29,15 @@ export function HeroSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center space-y-8">
-          {/* Profile Image Placeholder */}
-          <div className="mx-auto w-32 h-32 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-4xl font-bold text-primary-foreground">
-            ME
+          <div className="mx-auto w-32 h-32 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg">
+            <Image
+              src="/assets/marwan-profile.jpg"
+              alt="Marwan Elmallah - Professional Profile"
+              width={128}
+              height={128}
+              className="w-full h-full object-cover"
+              priority
+            />
           </div>
 
           {/* Main Heading */}
@@ -61,6 +77,10 @@ export function HeroSection() {
               <Linkedin className="h-4 w-4" />
               <span>linkedin.com/in/marwan-elmallah</span>
             </div>
+            <div className="flex items-center gap-2">
+              <Github className="h-4 w-4" />
+              <span>github.com/marwan-elmallah</span>
+            </div>
           </div>
 
           {/* CTA Buttons */}
@@ -69,7 +89,7 @@ export function HeroSection() {
               View My Work
               <ArrowDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform" />
             </Button>
-            <Button variant="outline" size="lg">
+            <Button variant="outline" size="lg" onClick={downloadCV}>
               <Download className="mr-2 h-4 w-4" />
               Download CV
             </Button>

@@ -123,4 +123,66 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Added logo dark mode support */
+  .logo-container {
+    color: var(--foreground);
+  }
+
+  .logo-container svg {
+    --logo-accent: var(--primary);
+  }
+
+  /* Dark mode logo adjustments */
+  .dark .logo-container svg {
+    filter: brightness(0.9) contrast(1.1);
+  }
+
+  /* Ensure logos are visible in both themes */
+  .logo-image {
+    transition: filter 0.3s ease;
+  }
+
+  .dark .logo-image {
+    filter: invert(1) hue-rotate(180deg) brightness(0.9);
+  }
+
+  /* Enhanced icon visibility in dark mode for specific service icons */
+  .dark .text-accent {
+    color: oklch(0.75 0.15 150) !important; /* Brighter green for Network icon */
+  }
+
+  .dark .text-secondary {
+    color: oklch(0.8 0.15 120) !important; /* Brighter green for Cloud icon */
+  }
+
+  .dark .text-chart-2 {
+    color: oklch(0.8 0.17 162) !important; /* Enhanced visibility for availability icons */
+  }
+
+  /* Ensure all service icons have proper contrast in dark mode */
+  .dark .text-primary {
+    color: oklch(0.75 0.15 200) !important;
+  }
+
+  .dark .text-chart-1 {
+    color: oklch(0.65 0.24 264) !important;
+  }
+
+  .dark .text-chart-3 {
+    color: oklch(0.85 0.19 70) !important;
+  }
+
+  /* Icon background adjustments for better visibility */
+  .dark .bg-accent\/10 {
+    background-color: oklch(0.3 0.12 150 / 0.2) !important;
+  }
+
+  .dark .bg-secondary\/10 {
+    background-color: oklch(0.3 0.15 120 / 0.2) !important;
+  }
+
+  .dark .bg-chart-2\/10 {
+    background-color: oklch(0.3 0.17 162 / 0.2) !important;
+  }
 }

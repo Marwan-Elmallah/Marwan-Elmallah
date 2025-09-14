@@ -10,16 +10,26 @@ import { Navigation } from "@/components/navigation"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-background">
-      <Navigation />
-      <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <ServicesSection />
-      <FeedbackSection />
-      <ContactSection />
-    </main>
+    <>
+      <div className="sr-only">
+        <h1>Marwan Elmallah - Expert Fullstack JavaScript Developer and Backend Engineer</h1>
+        <p>
+          Professional fullstack developer specializing in JavaScript, Node.js, React, backend development, and
+          technical support. Marwan Elmallah offers comprehensive IT solutions and fullstack development services.
+        </p>
+      </div>
+
+      <main className="min-h-screen bg-background">
+        <Navigation />
+        <HeroSection />
+        <AboutSection />
+        <SkillsSection />
+        <ExperienceSection />
+        <ProjectsSection />
+        <ServicesSection />
+        <FeedbackSection />
+        <ContactSection />
+      </main>
+    </>
   )
 }
