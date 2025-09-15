@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -11,23 +11,36 @@ import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { Star, MessageSquare, User, Calendar, Loader2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import { getApiUrl } from "@/lib/config"
 
 interface Feedback {
-  id: string
+  _id: string
   name: string
   email: string
   rating: number
   message: string
   createdAt: string
-  type: "general" | "project" | "service"
-  approved: boolean
+  type: string
+  updatedAt?: string
+  __v?: number
+}
+
+interface PaginationInfo {
+  currentPage: number
+  totalPages: number
+  totalItems: number
+  hasNextPage: boolean
+  hasPrevPage: boolean
 }
 
 export function FeedbackSection() {
   const [feedbacks, setFeedbacks] = useState<Feedback[]>([])
   const [loading, setLoading] = useState(true)
+  const [loadingMore, setLoadingMore] = useState(false)
+  const [pagination, setPagination] = useState<PaginationInfo | null>(null)
   const [submitting, setSubmitting] = useState(false)
   const { toast } = useToast()
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   const [formData, setFormData] = useState({
     name: "",
@@ -41,40 +54,100 @@ export function FeedbackSection() {
     fetchFeedback()
   }, [])
 
-  const fetchFeedback = async () => {
+  const fetchFeedback = async (page = 1, append = false) => {
     try {
-      const response = await fetch("/api/feedback?approved=true")
+      if (!append) setLoading(true)
+      else setLoadingMore(true)
+
+      console.log(`[v0] Fetching feedback from: ${getApiUrl(`/feedback?approved=true&page=${page}`)}`)
+      const response = await fetch(getApiUrl(`/feedback?approved=true&page=${page}`), {
+        mode: "cors",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+      console.log("[v0] Response status:", response.status)
+
       if (response.ok) {
         const data = await response.json()
-        setFeedbacks(data.feedback || [])
+        console.log("[v0] Feedback data received:", data)
+        if (data.error === false && data.data && data.data.data) {
+          if (append) {
+            setFeedbacks((prev) => [...prev, ...data.data.data])
+          } else {
+            setFeedbacks(data.data.data)
+          }
+          setPagination(data.data.pagination)
+        } else {
+          if (!append) setFeedbacks([])
+        }
+      } else {
+        console.error("[v0] Response not ok:", response.status, response.statusText)
       }
     } catch (error) {
-      console.error("Failed to fetch feedback:", error)
+      console.error("[v0] Failed to fetch feedback:", error)
     } finally {
       setLoading(false)
+      setLoadingMore(false)
     }
   }
+
+  const handleScroll = useCallback(() => {
+    const container = scrollContainerRef.current
+    if (!container || loadingMore || !pagination?.hasNextPage) return
+
+    const { scrollTop, scrollHeight, clientHeight } = container
+    if (scrollTop + clientHeight >= scrollHeight - 100) {
+      fetchFeedback(pagination.currentPage + 1, true)
+    }
+  }, [loadingMore, pagination])
+
+  useEffect(() => {
+    const container = scrollContainerRef.current
+    if (container) {
+      container.addEventListener("scroll", handleScroll)
+      return () => container.removeEventListener("scroll", handleScroll)
+    }
+  }, [handleScroll])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setSubmitting(true)
 
     try {
-      const response = await fetch("/api/feedback", {
+      const response = await fetch(getApiUrl("/feedback"), {
         method: "POST",
+        mode: "cors",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify(formData),
       })
 
       if (response.ok) {
+        const result = await response.json()
+        console.log("[v0] Feedback submission result:", result)
+
         toast({
           title: "Feedback submitted!",
           description: "Thank you for your feedback. It will be reviewed before being published.",
         })
 
-        // Reset form
+        if (result.error === false && result.data) {
+          const newFeedback = {
+            _id: result.data._id || Date.now().toString(),
+            name: formData.name,
+            email: formData.email,
+            rating: formData.rating,
+            message: formData.message,
+            type: formData.type,
+            createdAt: new Date().toISOString(),
+          }
+          setFeedbacks((prev) => [newFeedback, ...prev])
+        }
+
         setFormData({
           name: "",
           email: "",
@@ -228,49 +301,66 @@ export function FeedbackSection() {
           {/* Feedback List */}
           <div className="space-y-4">
             <h3 className="text-xl font-semibold mb-4">Recent Feedback</h3>
-            {loading ? (
-              <Card>
-                <CardContent className="p-6 text-center">
-                  <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2" />
-                  <p className="text-muted-foreground">Loading feedback...</p>
-                </CardContent>
-              </Card>
-            ) : feedbacks.length === 0 ? (
-              <Card>
-                <CardContent className="p-6 text-center text-muted-foreground">
-                  No feedback yet. Be the first to share your experience!
-                </CardContent>
-              </Card>
-            ) : (
-              feedbacks.map((feedback) => (
-                <Card key={feedback.id}>
-                  <CardContent className="p-6">
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
-                          <User className="w-5 h-5 text-primary" />
-                        </div>
-                        <div>
-                          <h4 className="font-semibold">{feedback.name}</h4>
-                          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                            <Calendar className="w-3 h-3" />
-                            {new Date(feedback.createdAt).toLocaleDateString()}
-                          </div>
-                        </div>
-                      </div>
-                      <Badge className={getTypeColor(feedback.type)}>{feedback.type}</Badge>
-                    </div>
-
-                    <div className="flex items-center gap-1 mb-3">
-                      {renderStars(feedback.rating)}
-                      <span className="text-sm text-muted-foreground ml-2">({feedback.rating}/5)</span>
-                    </div>
-
-                    <p className="text-muted-foreground">{feedback.message}</p>
+            <div ref={scrollContainerRef} className="h-[600px] overflow-y-auto space-y-4 pr-2">
+              {loading ? (
+                <Card>
+                  <CardContent className="p-6 text-center">
+                    <Loader2 className="w-6 h-6 animate-spin mx-auto mb-2" />
+                    <p className="text-muted-foreground">Loading feedback...</p>
                   </CardContent>
                 </Card>
-              ))
-            )}
+              ) : feedbacks.length === 0 ? (
+                <Card>
+                  <CardContent className="p-6 text-center text-muted-foreground">
+                    No feedback yet. Be the first to share your experience!
+                  </CardContent>
+                </Card>
+              ) : (
+                <>
+                  {feedbacks.map((feedback) => (
+                    <Card key={feedback._id}>
+                      <CardContent className="p-6">
+                        <div className="flex items-start justify-between mb-3">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center">
+                              <User className="w-5 h-5 text-primary" />
+                            </div>
+                            <div>
+                              <h4 className="font-semibold">{feedback.name}</h4>
+                              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                                <Calendar className="w-3 h-3" />
+                                {new Date(feedback.createdAt).toLocaleDateString()}
+                              </div>
+                            </div>
+                          </div>
+                          <Badge className={getTypeColor(feedback.type)}>{feedback.type}</Badge>
+                        </div>
+
+                        <div className="flex items-center gap-1 mb-3">
+                          {renderStars(feedback.rating)}
+                          <span className="text-sm text-muted-foreground ml-2">({feedback.rating}/5)</span>
+                        </div>
+
+                        <p className="text-muted-foreground">{feedback.message}</p>
+                      </CardContent>
+                    </Card>
+                  ))}
+                  {loadingMore && (
+                    <Card>
+                      <CardContent className="p-6 text-center">
+                        <Loader2 className="w-4 h-4 animate-spin mx-auto mb-2" />
+                        <p className="text-sm text-muted-foreground">Loading more feedback...</p>
+                      </CardContent>
+                    </Card>
+                  )}
+                  {pagination && !pagination.hasNextPage && feedbacks.length > 0 && (
+                    <div className="text-center py-4">
+                      <p className="text-sm text-muted-foreground">You've reached the end of all feedback</p>
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
           </div>
         </div>
       </div>

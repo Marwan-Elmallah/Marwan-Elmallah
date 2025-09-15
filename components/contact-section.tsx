@@ -10,6 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { Mail, Phone, Linkedin, MapPin, Send, Clock, Globe, CheckCircle, Github, Loader2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import { getApiUrl } from "@/lib/config"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -29,15 +30,30 @@ export function ContactSection() {
     setIsSubmitting(true)
 
     try {
-      const response = await fetch("/api/contact", {
+      const requestBody = {
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        type: formData.serviceType || "general inquiry",
+      }
+
+      console.log("[v0] Sending contact form:", requestBody)
+
+      const response = await fetch(getApiUrl("/contact"), {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(requestBody),
       })
 
+      console.log("[v0] Contact response status:", response.status)
+
       if (response.ok) {
+        const result = await response.json()
+        console.log("[v0] Contact response:", result)
+
         setIsSubmitted(true)
         toast({
           title: "Message sent!",
@@ -57,9 +73,11 @@ export function ContactSection() {
         }, 3000)
       } else {
         const error = await response.json()
-        throw new Error(error.error || "Failed to send message")
+        console.log("[v0] Contact error response:", error)
+        throw new Error(error.message || "Failed to send message")
       }
     } catch (error) {
+      console.log("[v0] Contact fetch error:", error)
       toast({
         title: "Error",
         description: error instanceof Error ? error.message : "Failed to send message. Please try again.",
@@ -111,7 +129,6 @@ export function ContactSection() {
   ]
 
   const serviceTypes = [
-    "Fullstack Development",
     "Backend Development",
     "Cloud Solutions",
     "Network Support",

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Users, Code, Clock, Award } from "lucide-react"
 import { useAnalytics } from "@/hooks/use-analytics"
+import { getApiUrl } from "@/lib/config"
 
 interface StatisticProps {
   icon: React.ReactNode
@@ -61,6 +62,38 @@ function StatisticCard({ icon, value, label, suffix }: StatisticProps) {
 
 export function StatisticsSection() {
   const { data: analytics } = useAnalytics(30) // Get 30 days of data
+  const [clientSatisfaction, setClientSatisfaction] = useState(98)
+
+  useEffect(() => {
+    const calculateClientSatisfaction = async () => {
+      try {
+        const response = await fetch(getApiUrl("/feedback?approved=true"), {
+          mode: "cors",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+        })
+
+        if (response.ok) {
+          const data = await response.json()
+          if (data.error === false && data.data && data.data.data) {
+            const feedbacks = data.data.data
+            if (feedbacks.length > 0) {
+              const totalRating = feedbacks.reduce((sum: number, feedback: any) => sum + feedback.rating, 0)
+              const maxPossibleRating = feedbacks.length * 5
+              const satisfaction = Math.round((totalRating / maxPossibleRating) * 100)
+              setClientSatisfaction(satisfaction)
+            }
+          }
+        }
+      } catch (error) {
+        console.error("[v0] Failed to calculate client satisfaction:", error)
+      }
+    }
+
+    calculateClientSatisfaction()
+  }, [])
 
   return (
     <section id="statistics" className="py-20 bg-muted/30">
@@ -95,7 +128,7 @@ export function StatisticsSection() {
           />
           <StatisticCard
             icon={<Award className="w-8 h-8 text-primary" />}
-            value={98}
+            value={clientSatisfaction}
             suffix="%"
             label="Client Satisfaction"
           />
