@@ -3,10 +3,14 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
+import Image from "next/image"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("home")
+  const [showTooltip, setShowTooltip] = useState(false)
+
 
   useEffect(() => {
     const sections = ["home", "about", "skills", "experience", "projects", "services", "feedback", "contact"]
@@ -55,12 +59,42 @@ export function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
-            <button
-              onClick={() => scrollToSection("home")}
-              className="text-xl font-bold text-primary hover:text-primary/80 transition-colors"
-            >
-              Marwan Elmallah
-            </button>
+            <div className="flex items-center gap-3 relative">
+              <div
+                className="relative"
+                onMouseEnter={() => setShowTooltip(true)}
+                onMouseLeave={() => setShowTooltip(false)}
+              >
+                <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 hover:border-primary/40 transition-colors cursor-pointer">
+                  <Image
+                    src="/assets/marwan-profile.jpg"
+                    alt="Marwan Elmallah"
+                    width={40}
+                    height={40}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                {/* Hover Tooltip */}
+                {showTooltip && (
+                  <div className="absolute top-12 left-1/2 transform -translate-x-1/2 bg-popover text-popover-foreground px-3 py-2 rounded-md shadow-lg border text-sm whitespace-nowrap z-10">
+                    <div className="text-center">
+                      <div className="font-semibold">Marwan Elmallah</div>
+                      <div className="text-xs text-muted-foreground">Egyptian • Single</div>
+                      <div className="text-xs text-muted-foreground">Backend Developer</div>
+                    </div>
+                    {/* Tooltip arrow */}
+                    <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-popover border-l border-t rotate-45"></div>
+                  </div>
+                )}
+              </div>
+              <button
+                onClick={() => scrollToSection("home")}
+                className="text-xl font-bold text-primary hover:text-primary/80 transition-colors"
+              >
+                Marwan Elmallah
+              </button>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
@@ -70,19 +104,21 @@ export function Navigation() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${activeSection === item.id
-                      ? "text-white bg-primary font-semibold"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 ${activeSection === item.id
+                    ? "text-primary-foreground bg-primary"
+                    : "text-foreground hover:text-primary hover:bg-muted"
                     }`}
                 >
                   {item.label}
                 </button>
               ))}
+              <ThemeToggle />
             </div>
           </div>
 
           {/* Mobile menu button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            <ThemeToggle />
             <Button variant="ghost" size="sm" onClick={() => setIsOpen(!isOpen)}>
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
@@ -97,9 +133,9 @@ export function Navigation() {
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${activeSection === item.id
-                      ? "text-white bg-primary font-semibold"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted"
+                  className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors focus:outline-none focus:ring-2 focus:ring-primary/50 ${activeSection === item.id
+                      ? "text-primary-foreground bg-primary"
+                      : "text-foreground hover:text-primary hover:bg-muted"
                     }`}
                 >
                   {item.label}
