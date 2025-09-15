@@ -1,6 +1,6 @@
 export const config = {
-  baseUrl: process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000",
-  apiUrl: process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api",
+  baseUrl: process.env.NEXT_PUBLIC_BASE_URL || "https://marwanelmallah.vercel.app/",
+  apiUrl: process.env.NEXT_PUBLIC_API_URL || "https://bussiness-umj5.onrender.com/api",
   isDevelopment: process.env.NODE_ENV === "development",
   isProduction: process.env.NODE_ENV === "production",
 } as const
