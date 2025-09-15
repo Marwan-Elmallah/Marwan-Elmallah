@@ -79,7 +79,7 @@ export function Navigation() {
                     <div className="text-center">
                       <div className="font-semibold">Marwan Elmallah</div>
                       <div className="text-xs text-muted-foreground">Egyptian • Single</div>
-                      <div className="text-xs text-muted-foreground">Backend Developer</div>
+                      <div className="text-xs text-muted-foreground">Full Stack Developer</div>
                     </div>
                     {/* Tooltip arrow */}
                     <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-popover border-l border-t rotate-45"></div>
