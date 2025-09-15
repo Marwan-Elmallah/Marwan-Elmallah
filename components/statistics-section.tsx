@@ -122,7 +122,7 @@ export function StatisticsSection() {
           />
           <StatisticCard
             icon={<Clock className="w-8 h-8 text-primary" />}
-            value={4}
+            value={new Date().getFullYear() - 2021}
             suffix="+"
             label="Years Experience"
           />
