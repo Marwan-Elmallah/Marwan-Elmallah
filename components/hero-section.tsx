@@ -14,12 +14,11 @@ export function HeroSection() {
   }
 
   const downloadCV = () => {
-    const link = document.createElement("a")
-    link.href = "/assets/marwan-elmallah-cv.pdf"
-    link.download = "Marwan_Elmallah_CV.pdf"
-    document.body.appendChild(link)
-    link.click()
-    document.body.removeChild(link)
+    window.open(
+      "https://drive.google.com/file/d/1xk-7G4Z-47xK5DUh6QYcvIRMGNTbkhi4/view?usp=drive_link",
+      "_blank",
+      "noopener,noreferrer"
+    )
   }
 
   return (
@@ -91,7 +90,7 @@ export function HeroSection() {
             </Button>
             <Button variant="outline" size="lg" onClick={downloadCV}>
               <Download className="mr-2 h-4 w-4" />
-              Download CV
+              View/Download CV
             </Button>
           </div>
         </div>
