@@ -11,16 +11,18 @@ import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
 import { Star, MessageSquare, User, Calendar, Loader2 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
+import { getApiUrl } from "@/lib/config"
 
 interface Feedback {
-  id: string
+  _id: string // Updated to match backend API response structure
   name: string
   email: string
   rating: number
   message: string
   createdAt: string
-  type: "general" | "project" | "service"
-  approved: boolean
+  type: string // Updated to accept any string type from backend
+  updatedAt?: string
+  __v?: number
 }
 
 export function FeedbackSection() {
@@ -43,13 +45,29 @@ export function FeedbackSection() {
 
   const fetchFeedback = async () => {
     try {
-      const response = await fetch("/api/feedback?approved=true")
+      console.log("[v0] Fetching feedback from:", getApiUrl("/feedback?approved=true"))
+      const response = await fetch(getApiUrl("/feedback?approved=true"), {
+        mode: "cors",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      })
+      console.log("[v0] Response status:", response.status)
+
       if (response.ok) {
         const data = await response.json()
-        setFeedbacks(data.feedback || [])
+        console.log("[v0] Feedback data received:", data)
+        if (data.error === false && data.data && data.data.data) {
+          setFeedbacks(data.data.data)
+        } else {
+          setFeedbacks([])
+        }
+      } else {
+        console.error("[v0] Response not ok:", response.status, response.statusText)
       }
     } catch (error) {
-      console.error("Failed to fetch feedback:", error)
+      console.error("[v0] Failed to fetch feedback:", error)
     } finally {
       setLoading(false)
     }
@@ -60,10 +78,12 @@ export function FeedbackSection() {
     setSubmitting(true)
 
     try {
-      const response = await fetch("/api/feedback", {
+      const response = await fetch(getApiUrl("/feedback"), {
         method: "POST",
+        mode: "cors",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
         body: JSON.stringify(formData),
       })
@@ -243,7 +263,9 @@ export function FeedbackSection() {
               </Card>
             ) : (
               feedbacks.map((feedback) => (
-                <Card key={feedback.id}>
+                <Card key={feedback._id}>
+                  {" "}
+                  {/* Updated to use _id from backend */}
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-center gap-3">
