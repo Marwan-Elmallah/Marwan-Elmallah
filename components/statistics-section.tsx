@@ -67,14 +67,13 @@ export function StatisticsSection() {
   useEffect(() => {
     const calculateClientSatisfaction = async () => {
       try {
-        const response = await fetch(getApiUrl("/feedback?approved=true"), {
+        const response = await fetch(getApiUrl("/feedback"), {
           mode: "cors",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
           },
         })
-
         if (response.ok) {
           const data = await response.json()
           if (data.error === false && data.data && data.data.data) {
@@ -122,7 +121,17 @@ export function StatisticsSection() {
           />
           <StatisticCard
             icon={<Clock className="w-8 h-8 text-primary" />}
-            value={new Date().getFullYear() - 2021}
+            value={
+              (() => {
+                const start = new Date(2020, 10, 8) // Month is 0-indexed: 10 = November
+                const now = new Date()
+                const months =
+                  (now.getFullYear() - start.getFullYear()) * 12 +
+                  (now.getMonth() - start.getMonth())
+                const years = months / 12
+                return parseInt(years.toFixed(1))
+              })()
+            }
             suffix="+"
             label="Years Experience"
           />
