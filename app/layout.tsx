@@ -1,4 +1,4 @@
-import type React from "react"
+// app/layout.tsx
 import type { Metadata } from "next"
 import { GeistSans } from "geist/font/sans"
 import { GeistMono } from "geist/font/mono"
@@ -6,10 +6,15 @@ import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
 import VisitorTracker from "@/components/visitor-tracker"
+import { Navigation } from "@/components/navigation" // ✅ Import Navigation here
 import "./globals.css"
 
+// ✅ Base metadata (can be overridden per page)
 export const metadata: Metadata = {
-  title: "Marwan Elmallah - Fullstack JavaScript Developer & IT Engineer",
+  title: {
+    default: "Marwan Elmallah - Fullstack JavaScript Developer & IT Engineer",
+    template: "%s | Marwan Elmallah", // e.g., "About | Marwan Elmallah"
+  },
   description:
     "Marwan Elmallah - Expert Fullstack JavaScript Developer, Backend Engineer, and Technical Support Specialist. 4+ years experience in Node.js, React, AWS, and cloud technologies. Professional IT solutions and fullstack development services.",
   generator: "v0.app",
@@ -59,7 +64,7 @@ export const metadata: Metadata = {
     siteName: "Marwan Elmallah Portfolio",
     images: [
       {
-        url: "/assets/marwan-profile.jpg",
+        url: "https://marwan-elmallah.vercel.app/assets/marwan-profile.jpg",
         width: 1200,
         height: 630,
         alt: "Marwan Elmallah - Fullstack JavaScript Developer",
@@ -71,7 +76,7 @@ export const metadata: Metadata = {
     title: "Marwan Elmallah - Fullstack JavaScript Developer & IT Engineer",
     description:
       "Expert Fullstack JavaScript Developer and Backend Engineer with 4+ years experience in Node.js, React, and technical support.",
-    images: ["/assets/marwan-profile.jpg"],
+    images: ["https://marwan-elmallah.vercel.app/assets/marwan-profile.jpg"],
   },
   alternates: {
     canonical: "https://marwan-elmallah.vercel.app",
@@ -94,12 +99,19 @@ export default function RootLayout({
               "@type": "Person",
               name: "Marwan Mohamed Kamel Elmallah",
               alternateName: "Marwan Elmallah",
-              jobTitle: ["Fullstack JavaScript Developer", "Backend Developer", "Technical Support Specialist"],
+              jobTitle: [
+                "Fullstack JavaScript Developer",
+                "Backend Developer",
+                "Technical Support Specialist",
+              ],
               description:
                 "Expert Fullstack JavaScript Developer and Backend Engineer with 4+ years experience in Node.js, React, technical support, and cloud technologies.",
               url: "https://marwan-elmallah.vercel.app",
-              image: "/assets/marwan-profile.jpg",
-              sameAs: ["https://linkedin.com/in/marwan-elmallah", "https://github.com/marwan-elmallah"],
+              image: "https://marwan-elmallah.vercel.app/assets/marwan-profile.jpg",
+              sameAs: [
+                "https://linkedin.com/in/marwan-elmallah",
+                "https://github.com/marwan-elmallah",
+              ],
               knowsAbout: [
                 "Fullstack Development",
                 "Backend Development",
@@ -129,7 +141,10 @@ export default function RootLayout({
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <VisitorTracker />
-          <Suspense fallback={null}>{children}</Suspense>
+          <Navigation /> {/* ✅ Navigation wraps all pages */}
+          <main className="pt-20"> {/* ✅ Space for fixed nav */}
+            <Suspense fallback={null}>{children}</Suspense>
+          </main>
           <Analytics />
         </ThemeProvider>
       </body>

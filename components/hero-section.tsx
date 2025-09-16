@@ -89,8 +89,8 @@ export function HeroSection() {
               <ArrowDown className="ml-2 h-4 w-4 group-hover:translate-y-1 transition-transform" />
             </Button>
             <Button variant="outline" size="lg" onClick={downloadCV}>
-              <Download className="mr-2 h-4 w-4" />
               View/Download CV
+              <Download className="mr-2 h-4 w-4" />
             </Button>
           </div>
         </div>
