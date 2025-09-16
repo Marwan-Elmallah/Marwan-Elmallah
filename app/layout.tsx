@@ -9,10 +9,15 @@ import VisitorTracker from "@/components/visitor-tracker"
 import "./globals.css"
 
 export const metadata: Metadata = {
-  title: "Marwan Elmallah - Fullstack JavaScript Developer & Backend Engineer",
+  title: "Marwan Elmallah - Fullstack JavaScript Developer & IT Engineer",
   description:
     "Marwan Elmallah - Expert Fullstack JavaScript Developer, Backend Engineer, and Technical Support Specialist. 4+ years experience in Node.js, React, AWS, and cloud technologies. Professional IT solutions and fullstack development services.",
   generator: "v0.app",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   keywords: [
     "Marwan Elmallah",
     "fullstack developer",
@@ -45,7 +50,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Marwan Elmallah - Fullstack JavaScript Developer & Backend Engineer",
+    title: "Marwan Elmallah - Fullstack JavaScript Developer & IT Engineer",
     description:
       "Expert Fullstack JavaScript Developer and Backend Engineer with 4+ years experience. Specializing in Node.js, React, technical support, and cloud technologies.",
     type: "website",
@@ -63,7 +68,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marwan Elmallah - Fullstack JavaScript Developer & Backend Engineer",
+    title: "Marwan Elmallah - Fullstack JavaScript Developer & IT Engineer",
     description:
       "Expert Fullstack JavaScript Developer and Backend Engineer with 4+ years experience in Node.js, React, and technical support.",
     images: ["/assets/marwan-profile.jpg"],

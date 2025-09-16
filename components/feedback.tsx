@@ -59,7 +59,7 @@ export function FeedbackSection() {
       if (!append) setLoading(true)
       else setLoadingMore(true)
 
-      console.log(`[v0] Fetching feedback from: ${getApiUrl(`/feedback?approved=true&page=${page}`)}`)
+      // console.log(`[v0] Fetching feedback from: ${getApiUrl(`/feedback?approved=true&page=${page}`)}`)
       const response = await fetch(getApiUrl(`/feedback?approved=true&page=${page}`), {
         mode: "cors",
         headers: {
@@ -67,11 +67,11 @@ export function FeedbackSection() {
           "Content-Type": "application/json",
         },
       })
-      console.log("[v0] Response status:", response.status)
+      // console.log("[v0] Response status:", response.status)
 
       if (response.ok) {
         const data = await response.json()
-        console.log("[v0] Feedback data received:", data)
+        // console.log("[v0] Feedback data received:", data)
         if (data.error === false && data.data && data.data.data) {
           if (append) {
             setFeedbacks((prev) => [...prev, ...data.data.data])
@@ -128,7 +128,7 @@ export function FeedbackSection() {
 
       if (response.ok) {
         const result = await response.json()
-        console.log("[v0] Feedback submission result:", result)
+        // console.log("[v0] Feedback submission result:", result)
 
         toast({
           title: "Feedback submitted!",

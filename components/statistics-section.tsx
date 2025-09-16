@@ -4,8 +4,8 @@ import type React from "react"
 
 import { useEffect, useState } from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import { Users, Code, Clock, Award } from "lucide-react"
-import { useAnalytics } from "@/hooks/use-analytics"
+import { Users, Code, Award, Monitor, Globe, Clock } from "lucide-react"
+import { useVisitorTracking } from "@/hooks/use-visitor-tracking"
 import { getApiUrl } from "@/lib/config"
 
 interface StatisticProps {
@@ -61,19 +61,20 @@ function StatisticCard({ icon, value, label, suffix }: StatisticProps) {
 }
 
 export function StatisticsSection() {
-  const { data: analytics } = useAnalytics(30) // Get 30 days of data
+  const { stats: visitorStats, loading } = useVisitorTracking()
   const [clientSatisfaction, setClientSatisfaction] = useState(98)
 
   useEffect(() => {
     const calculateClientSatisfaction = async () => {
       try {
-        const response = await fetch(getApiUrl("/feedback"), {
+        const response = await fetch(getApiUrl("/feedback?approved=true"), {
           mode: "cors",
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
           },
         })
+
         if (response.ok) {
           const data = await response.json()
           if (data.error === false && data.data && data.data.data) {
@@ -106,12 +107,18 @@ export function StatisticsSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-8">
           <StatisticCard
             icon={<Users className="w-8 h-8 text-primary" />}
-            value={analytics?.totalVisitors || 1250}
+            value={visitorStats?.totalVisitors || 0}
             suffix="+"
-            label="Site Visitors"
+            label="Total Visitors"
+          />
+          <StatisticCard
+            icon={<Globe className="w-8 h-8 text-primary" />}
+            value={visitorStats?.todayVisitors || 0}
+            suffix=""
+            label="Today's Visitors"
           />
           <StatisticCard
             icon={<Code className="w-8 h-8 text-primary" />}
@@ -119,7 +126,7 @@ export function StatisticsSection() {
             suffix="+"
             label="Projects Completed"
           />
-          <StatisticCard
+                    <StatisticCard
             icon={<Clock className="w-8 h-8 text-primary" />}
             value={
               (() => {
@@ -142,6 +149,65 @@ export function StatisticsSection() {
             label="Client Satisfaction"
           />
         </div>
+
+        {visitorStats && !loading && (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <Card>
+              <CardContent className="p-6">
+                <h3 className="font-semibold mb-4 flex items-center gap-2">
+                  <Monitor className="w-5 h-5 text-primary" />
+                  Device Types
+                </h3>
+                <div className="space-y-2">
+                  {Object.entries(visitorStats.deviceTypes).map(([device, count]) => (
+                    <div key={device} className="flex justify-between">
+                      <span className="capitalize">{device}</span>
+                      <span className="font-medium">{count}</span>
+                    </div>
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6">
+                <h3 className="font-semibold mb-4 flex items-center gap-2">
+                  <Globe className="w-5 h-5 text-primary" />
+                  Browsers
+                </h3>
+                <div className="space-y-2">
+                  {Object.entries(visitorStats.browsers)
+                    .slice(0, 5)
+                    .map(([browser, count]) => (
+                      <div key={browser} className="flex justify-between">
+                        <span className="capitalize">{browser}</span>
+                        <span className="font-medium">{count}</span>
+                      </div>
+                    ))}
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardContent className="p-6">
+                <h3 className="font-semibold mb-4 flex items-center gap-2">
+                  <Users className="w-5 h-5 text-primary" />
+                  Locations
+                </h3>
+                <div className="space-y-2">
+                  {Object.entries(visitorStats.countries)
+                    .slice(0, 5)
+                    .map(([country, count]) => (
+                      <div key={country} className="flex justify-between">
+                        <span>{country}</span>
+                        <span className="font-medium">{count}</span>
+                      </div>
+                    ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
       </div>
     </section>
   )
