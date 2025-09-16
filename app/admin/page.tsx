@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useAnalytics } from "@/hooks/use-analytics"
 import { Users, MessageSquare, Mail, Eye, CheckCircle, XCircle, Trash2 } from "lucide-react"
+import { getApiUrl } from "@/lib/config"
 
 interface ContactMessage {
   id: string
@@ -31,6 +32,7 @@ interface Feedback {
 export default function AdminDashboard() {
   const [contactMessages, setContactMessages] = useState<ContactMessage[]>([])
   const [feedback, setFeedback] = useState<Feedback[]>([])
+  const [visitors, setVisitors] = useState<any[]>([]) // Add this line
   const [loading, setLoading] = useState(true)
   const { data: analytics } = useAnalytics(7)
 
@@ -40,16 +42,23 @@ export default function AdminDashboard() {
 
   const fetchData = async () => {
     try {
-      const [contactRes, feedbackRes] = await Promise.all([fetch("/api/contact"), fetch("/api/feedback")])
+      const contactRes = await fetch(getApiUrl("/contact"), { /* ... */ })
+      const feedbackRes = await fetch(getApiUrl("/feedback"), { /* ... */ })
+      const visitorRes = await fetch(getApiUrl("/visitor"), { /* ... */ })
 
       if (contactRes.ok) {
         const contactData = await contactRes.json()
-        setContactMessages(contactData.messages || [])
+        setContactMessages(contactData.data || [])
       }
 
       if (feedbackRes.ok) {
         const feedbackData = await feedbackRes.json()
-        setFeedback(feedbackData.feedback || [])
+        setFeedback(feedbackData.data?.data || [])
+      }
+
+      if (visitorRes.ok) {
+        const visitorData = await visitorRes.json()
+        setVisitors(visitorData.data || [])
       }
     } catch (error) {
       console.error("Failed to fetch admin data:", error)
@@ -113,7 +122,7 @@ export default function AdminDashboard() {
               <div className="flex items-center gap-4">
                 <Users className="h-8 w-8 text-blue-500" />
                 <div>
-                  <p className="text-2xl font-bold">{analytics?.totalVisitors || 0}</p>
+                  <p className="text-2xl font-bold">{visitors?.length || 0}</p>
                   <p className="text-sm text-muted-foreground">Total Visitors</p>
                 </div>
               </div>
@@ -196,6 +205,21 @@ export default function AdminDashboard() {
             </Card>
           </TabsContent>
 
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+            {/* ...existing cards... */}
+            <Card>
+              <CardContent className="p-6">
+                <div className="flex items-center gap-4">
+                  <Users className="h-8 w-8 text-teal-500" />
+                  <div>
+                    <p className="text-2xl font-bold">{visitors.length}</p>
+                    <p className="text-sm text-muted-foreground">Unique Visitors</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
           <TabsContent value="feedback" className="space-y-4">
             <Card>
               <CardHeader>
@@ -261,34 +285,25 @@ export default function AdminDashboard() {
 
           <TabsContent value="analytics" className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* ...existing cards... */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Top Pages</CardTitle>
+                  <CardTitle>Top Visitor Countries</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    {analytics?.topPages?.map((page, index) => (
-                      <div key={index} className="flex justify-between items-center">
-                        <span className="text-sm">{page.page}</span>
-                        <Badge variant="secondary">{page.views} views</Badge>
-                      </div>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>Daily Visitors (Last 7 Days)</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-2">
-                    {Object.entries(analytics?.dailyBreakdown || {})
-                      .slice(-7)
-                      .map(([date, count]) => (
-                        <div key={date} className="flex justify-between items-center">
-                          <span className="text-sm">{new Date(date).toLocaleDateString()}</span>
-                          <Badge variant="secondary">{count} visitors</Badge>
+                    {Object.entries(
+                      visitors.reduce((acc, v) => {
+                        acc[v.country] = (acc[v.country] || 0) + 1
+                        return acc
+                      }, {} as Record<string, number>) as Record<string, number>
+                    )
+                      .sort((a: [string, number], b: [string, number]) => b[1] - a[1])
+                      .slice(0, 5)
+                      .map(([country, count]) => (
+                        <div key={country} className="flex justify-between items-center">
+                          <span className="text-sm">{country}</span>
+                          <Badge variant="secondary">{String(count)} visitors</Badge>
                         </div>
                       ))}
                   </div>

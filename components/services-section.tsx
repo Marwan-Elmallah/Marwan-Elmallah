@@ -4,8 +4,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Code, Cloud, Network, Headphones, Database, Settings, MapPin, Wifi, CheckCircle } from "lucide-react"
+import { useRouter } from "next/navigation"
 
 export function ServicesSection() {
+  const router = useRouter()
+
   const services = [
     {
       title: "Full Stack Development",
@@ -24,10 +27,10 @@ export function ServicesSection() {
         "Deployment & DevOps Ready",
       ],
       technologies: [
-        "Node.js", "Express.js", "Nest.js", 
+        "Node.js", "Express.js", "Nest.js",
         "Strapi", "MySQL", "Socket.io",
         "MongoDB", "PostgreSQL", "Bootstrap",
-        "React.js", "Next.js", "Tailwind CSS", 
+        "React.js", "Next.js", "Tailwind CSS",
       ],
     },
     {
@@ -76,7 +79,7 @@ export function ServicesSection() {
         "Security Implementation",
         "Cost Optimization",
       ],
-      technologies: ["cPanel", "Render", "Hostinger", "Digital Ocean" ,"AWS EC2", "AWS S3", "AWS IAM"],
+      technologies: ["cPanel", "Render", "Hostinger", "Digital Ocean", "AWS EC2", "AWS S3", "AWS IAM"],
     },
     {
       title: "Database Management",
@@ -112,11 +115,9 @@ export function ServicesSection() {
     },
   ]
 
+
   const scrollToContact = () => {
-    const element = document.getElementById("contact")
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
+    router.push("/contact")
   }
 
   return (
@@ -213,9 +214,6 @@ export function ServicesSection() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" onClick={scrollToContact}>
                   Request Consultation
-                </Button>
-                <Button variant="outline" size="lg">
-                  View Portfolio
                 </Button>
               </div>
             </CardContent>

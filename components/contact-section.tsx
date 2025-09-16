@@ -335,11 +335,6 @@ export function ContactSection() {
             </CardContent>
           </Card>
         </div>
-
-        {/* Footer */}
-        <div className="text-center mt-16 pt-8 border-t border-border">
-          <p className="text-muted-foreground">© 2025 Marwan Mohamed Kamel Elmallah. All rights reserved.</p>
-        </div>
       </div>
     </section>
   )

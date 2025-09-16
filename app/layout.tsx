@@ -142,9 +142,14 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <VisitorTracker />
           <Navigation /> {/* ✅ Navigation wraps all pages */}
-          <main className="pt-20"> {/* ✅ Space for fixed nav */}
+          <main className=""> {/* ✅ Space for fixed nav */}
             <Suspense fallback={null}>{children}</Suspense>
           </main>
+
+          {/* Footer */}
+          <div className="text-center mt-16 py-8 border-t border-border">
+            <p className="text-muted-foreground">© 2025 Marwan Elmallah. All rights reserved.</p>
+          </div>
           <Analytics />
         </ThemeProvider>
       </body>
