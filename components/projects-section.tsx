@@ -81,7 +81,7 @@ export function ProjectsSection() {
         "Responsive design",
         "User-friendly interface",
       ],
-      link: { github: "#", demo: "#" },
+      link: { github: "https://github.com/Marwan-Elmallah/To-Do", demo: "https://marwan-elmallah.github.io/To-Do" },
     },
   ]
 
