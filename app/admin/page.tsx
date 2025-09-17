@@ -16,7 +16,7 @@ interface ContactMessage {
   subject: string
   message: string
   createdAt: string
-  status: "new" | "read" | "replied"
+  // status: "new" | "read" | "replied"
 }
 
 interface Feedback {
@@ -64,36 +64,6 @@ export default function AdminDashboard() {
       console.error("Failed to fetch admin data:", error)
     } finally {
       setLoading(false)
-    }
-  }
-
-  const approveFeedback = async (id: string, approved: boolean) => {
-    try {
-      const response = await fetch(`/api/admin/feedback/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ approved }),
-      })
-
-      if (response.ok) {
-        setFeedback((prev) => prev.map((item) => (item.id === id ? { ...item, approved } : item)))
-      }
-    } catch (error) {
-      console.error("Failed to update feedback:", error)
-    }
-  }
-
-  const deleteFeedback = async (id: string) => {
-    try {
-      const response = await fetch(`/api/admin/feedback/${id}`, {
-        method: "DELETE",
-      })
-
-      if (response.ok) {
-        setFeedback((prev) => prev.filter((item) => item.id !== id))
-      }
-    } catch (error) {
-      console.error("Failed to delete feedback:", error)
     }
   }
 
@@ -189,7 +159,6 @@ export default function AdminDashboard() {
                             <p className="text-sm text-muted-foreground">{message.email}</p>
                           </div>
                           <div className="flex items-center gap-2">
-                            <Badge variant={message.status === "new" ? "default" : "secondary"}>{message.status}</Badge>
                             <span className="text-xs text-muted-foreground">
                               {new Date(message.createdAt).toLocaleDateString()}
                             </span>
@@ -230,37 +199,6 @@ export default function AdminDashboard() {
                               <span className="text-sm text-muted-foreground ml-2">({item.rating}/5)</span>
                             </div>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <Badge variant={item.approved ? "default" : "secondary"}>
-                              {item.approved ? "Approved" : "Pending"}
-                            </Badge>
-                            <span className="text-xs text-muted-foreground">
-                              {new Date(item.createdAt).toLocaleDateString()}
-                            </span>
-                          </div>
-                        </div>
-                        <p className="text-sm text-muted-foreground mb-4">{item.message}</p>
-                        <div className="flex gap-2">
-                          {!item.approved && (
-                            <Button
-                              size="sm"
-                              onClick={() => approveFeedback(item.id, true)}
-                              className="bg-green-600 hover:bg-green-700"
-                            >
-                              <CheckCircle className="w-4 h-4 mr-1" />
-                              Approve
-                            </Button>
-                          )}
-                          {item.approved && (
-                            <Button size="sm" variant="outline" onClick={() => approveFeedback(item.id, false)}>
-                              <XCircle className="w-4 h-4 mr-1" />
-                              Unapprove
-                            </Button>
-                          )}
-                          <Button size="sm" variant="destructive" onClick={() => deleteFeedback(item.id)}>
-                            <Trash2 className="w-4 h-4 mr-1" />
-                            Delete
-                          </Button>
                         </div>
                       </CardContent>
                     </Card>
@@ -272,6 +210,7 @@ export default function AdminDashboard() {
 
           <TabsContent value="analytics" className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {/* Example Analytics Cards */}
               <Card>
                 <CardHeader>
                   <CardTitle>Device Type Distribution</CardTitle>
