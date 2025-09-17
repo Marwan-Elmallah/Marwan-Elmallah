@@ -1,3 +1,4 @@
+// components/theme-toggle.tsx
 "use client"
 
 import * as React from "react"
@@ -16,22 +17,26 @@ export function ThemeToggle() {
 
   if (!mounted) {
     return (
-      <Button variant="ghost" size="sm" className="w-9 px-0">
-        <Sun className="h-[1.2rem] w-[1.2rem]" />
+      <Button variant="ghost" size="sm" className="w-9 px-0" disabled>
+        <Sun className="h-[1.2rem] w-[1.2rem]" strokeWidth={2} />
         <span className="sr-only">Toggle theme</span>
       </Button>
     )
   }
+
+  const isDark = theme === "dark"
 
   return (
     <Button
       variant="ghost"
       size="sm"
       className="w-9 px-0"
-      onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+      onClick={() => setTheme(isDark ? "light" : "dark")}
+      aria-label={`Switch to ${isDark ? "light" : "dark"} mode`}
+      title={`Switch to ${isDark ? "light" : "dark"} mode`}
     >
-      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+      <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" strokeWidth={2} />
+      <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" strokeWidth={2} />
       <span className="sr-only">Toggle theme</span>
     </Button>
   )

@@ -16,7 +16,7 @@ interface ContactMessage {
   subject: string
   message: string
   createdAt: string
-  status: "new" | "read" | "replied"
+  // status: "new" | "read" | "replied"
 }
 
 interface Feedback {
@@ -32,7 +32,7 @@ interface Feedback {
 export default function AdminDashboard() {
   const [contactMessages, setContactMessages] = useState<ContactMessage[]>([])
   const [feedback, setFeedback] = useState<Feedback[]>([])
-  const [visitors, setVisitors] = useState<any[]>([]) // Add this line
+  const [visitors, setVisitors] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
   const { data: analytics } = useAnalytics(7)
 
@@ -42,9 +42,9 @@ export default function AdminDashboard() {
 
   const fetchData = async () => {
     try {
-      const contactRes = await fetch(getApiUrl("/contact"), { /* ... */ })
-      const feedbackRes = await fetch(getApiUrl("/feedback"), { /* ... */ })
-      const visitorRes = await fetch(getApiUrl("/visitor"), { /* ... */ })
+      const contactRes = await fetch(getApiUrl("/contact"))
+      const feedbackRes = await fetch(getApiUrl("/feedback"))
+      const visitorRes = await fetch(getApiUrl("/visitor"))
 
       if (contactRes.ok) {
         const contactData = await contactRes.json()
@@ -64,36 +64,6 @@ export default function AdminDashboard() {
       console.error("Failed to fetch admin data:", error)
     } finally {
       setLoading(false)
-    }
-  }
-
-  const approveFeedback = async (id: string, approved: boolean) => {
-    try {
-      const response = await fetch(`/api/admin/feedback/${id}`, {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ approved }),
-      })
-
-      if (response.ok) {
-        setFeedback((prev) => prev.map((item) => (item.id === id ? { ...item, approved } : item)))
-      }
-    } catch (error) {
-      console.error("Failed to update feedback:", error)
-    }
-  }
-
-  const deleteFeedback = async (id: string) => {
-    try {
-      const response = await fetch(`/api/admin/feedback/${id}`, {
-        method: "DELETE",
-      })
-
-      if (response.ok) {
-        setFeedback((prev) => prev.filter((item) => item.id !== id))
-      }
-    } catch (error) {
-      console.error("Failed to delete feedback:", error)
     }
   }
 
@@ -189,7 +159,6 @@ export default function AdminDashboard() {
                             <p className="text-sm text-muted-foreground">{message.email}</p>
                           </div>
                           <div className="flex items-center gap-2">
-                            <Badge variant={message.status === "new" ? "default" : "secondary"}>{message.status}</Badge>
                             <span className="text-xs text-muted-foreground">
                               {new Date(message.createdAt).toLocaleDateString()}
                             </span>
@@ -205,20 +174,7 @@ export default function AdminDashboard() {
             </Card>
           </TabsContent>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
-            {/* ...existing cards... */}
-            <Card>
-              <CardContent className="p-6">
-                <div className="flex items-center gap-4">
-                  <Users className="h-8 w-8 text-teal-500" />
-                  <div>
-                    <p className="text-2xl font-bold">{visitors.length}</p>
-                    <p className="text-sm text-muted-foreground">Unique Visitors</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+          {/* ⚠️ REMOVED DUPLICATE CARD GRID HERE — was outside Tabs and breaking layout */}
 
           <TabsContent value="feedback" className="space-y-4">
             <Card>
@@ -243,37 +199,6 @@ export default function AdminDashboard() {
                               <span className="text-sm text-muted-foreground ml-2">({item.rating}/5)</span>
                             </div>
                           </div>
-                          <div className="flex items-center gap-2">
-                            <Badge variant={item.approved ? "default" : "secondary"}>
-                              {item.approved ? "Approved" : "Pending"}
-                            </Badge>
-                            <span className="text-xs text-muted-foreground">
-                              {new Date(item.createdAt).toLocaleDateString()}
-                            </span>
-                          </div>
-                        </div>
-                        <p className="text-sm text-muted-foreground mb-4">{item.message}</p>
-                        <div className="flex gap-2">
-                          {!item.approved && (
-                            <Button
-                              size="sm"
-                              onClick={() => approveFeedback(item.id, true)}
-                              className="bg-green-600 hover:bg-green-700"
-                            >
-                              <CheckCircle className="w-4 h-4 mr-1" />
-                              Approve
-                            </Button>
-                          )}
-                          {item.approved && (
-                            <Button size="sm" variant="outline" onClick={() => approveFeedback(item.id, false)}>
-                              <XCircle className="w-4 h-4 mr-1" />
-                              Unapprove
-                            </Button>
-                          )}
-                          <Button size="sm" variant="destructive" onClick={() => deleteFeedback(item.id)}>
-                            <Trash2 className="w-4 h-4 mr-1" />
-                            Delete
-                          </Button>
                         </div>
                       </CardContent>
                     </Card>
@@ -285,25 +210,121 @@ export default function AdminDashboard() {
 
           <TabsContent value="analytics" className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {/* ...existing cards... */}
+              {/* Example Analytics Cards */}
               <Card>
                 <CardHeader>
-                  <CardTitle>Top Visitor Countries</CardTitle>
+                  <CardTitle>Device Type Distribution</CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    {Object.entries(
+                    {(Object.entries(
                       visitors.reduce((acc, v) => {
-                        acc[v.country] = (acc[v.country] || 0) + 1
+                        acc[v.deviceType] = (acc[v.deviceType] || 0) + 1
                         return acc
-                      }, {} as Record<string, number>) as Record<string, number>
-                    )
-                      .sort((a: [string, number], b: [string, number]) => b[1] - a[1])
+                      }, {} as Record<string, number>)
+                    ) as [string, number][])
+                      .sort((a, b) => b[1] - a[1])
+                      .map(([type, count]) => (
+                        <div key={type} className="flex justify-between items-center">
+                          <span className="text-sm capitalize">{type}</span>
+                          <Badge variant="secondary">{count} visits</Badge>
+                        </div>
+                      ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Top Browsers</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {(Object.entries(
+                      visitors.reduce((acc, v) => {
+                        acc[v.browser] = (acc[v.browser] || 0) + 1
+                        return acc
+                      }, {} as Record<string, number>)
+                    ) as [string, number][])
+                      .sort((a, b) => b[1] - a[1])
                       .slice(0, 5)
-                      .map(([country, count]) => (
-                        <div key={country} className="flex justify-between items-center">
-                          <span className="text-sm">{country}</span>
-                          <Badge variant="secondary">{String(count)} visitors</Badge>
+                      .map(([browser, count]) => (
+                        <div key={browser} className="flex justify-between items-center">
+                          <span className="text-sm">{browser}</span>
+                          <Badge variant="secondary">{count} visits</Badge>
+                        </div>
+                      ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Top Operating Systems</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {(Object.entries(
+                      visitors.reduce((acc, v) => {
+                        acc[v.os] = (acc[v.os] || 0) + 1
+                        return acc
+                      }, {} as Record<string, number>)
+                    ) as [string, number][])
+                      .sort((a, b) => b[1] - a[1])
+                      .slice(0, 5)
+                      .map(([os, count]) => (
+                        <div key={os} className="flex justify-between items-center">
+                          <span className="text-sm">{os}</span>
+                          <Badge variant="secondary">{count} visits</Badge>
+                        </div>
+                      ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Top Referrers</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {(Object.entries(
+                      visitors.reduce((acc, v) => {
+                        acc[v.referrer] = (acc[v.referrer] || 0) + 1
+                        return acc
+                      }, {} as Record<string, number>)
+                    ) as [string, number][])
+                      .sort((a, b) => b[1] - a[1])
+                      .slice(0, 5)
+                      .map(([referrer, count]) => (
+                        <div key={referrer} className="flex justify-between items-center">
+                          <span className="text-sm">{referrer}</span>
+                          <Badge variant="secondary">{count} visits</Badge>
+                        </div>
+                      ))}
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardHeader>
+                  <CardTitle>Visits by City</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {(Object.entries(
+                      visitors.reduce((acc, v) => {
+                        const city = v.city || "Unknown"
+                        acc[city] = (acc[city] || 0) + 1
+                        return acc
+                      }, {} as Record<string, number>)
+                    ) as [string, number][])
+                      .sort((a, b) => b[1] - a[1])
+                      .slice(0, 5)
+                      .map(([city, count]) => (
+                        <div key={city} className="flex justify-between items-center">
+                          <span className="text-sm">{city}</span>
+                          <Badge variant="secondary">{count} visits</Badge>
                         </div>
                       ))}
                   </div>

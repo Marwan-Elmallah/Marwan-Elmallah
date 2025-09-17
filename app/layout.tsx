@@ -6,18 +6,22 @@ import { Analytics } from "@vercel/analytics/next"
 import { Suspense } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
 import VisitorTracker from "@/components/visitor-tracker"
-import { Navigation } from "@/components/navigation" // ✅ Import Navigation here
+import { Navigation } from "@/components/navigation"
 import "./globals.css"
 
-// ✅ Base metadata (can be overridden per page)
 export const metadata: Metadata = {
   title: {
     default: "Marwan Elmallah - Fullstack JavaScript Developer & IT Engineer",
-    template: "%s | Marwan Elmallah", // e.g., "About | Marwan Elmallah"
+    template: "%s | Marwan Elmallah",
   },
   description:
     "Marwan Elmallah - Expert Fullstack JavaScript Developer, Backend Engineer, and Technical Support Specialist. 4+ years experience in Node.js, React, AWS, and cloud technologies. Professional IT solutions and fullstack development services.",
   generator: "v0.app",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+  },
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
@@ -91,6 +95,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="theme-color" content="#ffffff" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -141,12 +146,11 @@ export default function RootLayout({
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <VisitorTracker />
-          <Navigation /> {/* ✅ Navigation wraps all pages */}
-          <main className=""> {/* ✅ Space for fixed nav */}
+          <Navigation />
+          <main className="pt-16">
             <Suspense fallback={null}>{children}</Suspense>
           </main>
 
-          {/* Footer */}
           <div className="text-center mt-16 py-8 border-t border-border">
             <p className="text-muted-foreground">© 2025 Marwan Elmallah. All rights reserved.</p>
           </div>
