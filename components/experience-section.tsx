@@ -7,7 +7,7 @@ export function ExperienceSection() {
     {
       title: "Support Engineer",
       company: "Bayanat Smart Systems",
-      type: "Full-time",
+      type: "Full-Time",
       location: "RAK, UAE",
       period: "March 2025 - Present",
       description:
@@ -23,9 +23,9 @@ export function ExperienceSection() {
       technologies: ["Nifty", "Excel", "GPS Tracking", "Biometric Systems", "Web Applications"],
     },
     {
-      title: "Outlet & Visits Technical Support Engineer",
+      title: "Technical Support Engineer",
       company: "Telecom Egypt",
-      type: "Full-time",
+      type: "Full-Time",
       location: "Alexandria, Egypt",
       period: "Nov 2020 - Jan 2025",
       description:
@@ -48,7 +48,7 @@ export function ExperienceSection() {
     {
       title: "Backend Developer",
       company: "Smart Serve",
-      type: "Remote",
+      type: "Part-Time",
       location: "Remote",
       period: "Feb 2024 - Aug 2024",
       description:
