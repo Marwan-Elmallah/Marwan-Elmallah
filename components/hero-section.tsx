@@ -45,11 +45,14 @@ export function HeroSection() {
               Available for Remote & On-site Work
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold text-balance">
-              Marwan Mohamed Kamel <span className="text-primary">Elmallah</span>
+              Marwan <span className="text-primary">Elmallah</span>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground text-balance max-w-3xl mx-auto">
-              IT Professional & Backend Developer with 4+ years of experience in Technical Support, Cloud Technologies,
-              and Scalable Solutions
+              A dedicated and versatile IT Professional with 4+ years of experience in Technical Support and Backend
+                Development, focused on building reliable, cloud-ready solutions. Expertise includes CCNA-level
+                networking, infrastructure troubleshooting, scalable backend architecture, and RESTful API development
+                using Node.js, Express.js, MySQL, and MongoDB. Seeking a challenging hybrid role that leverages a
+                strong foundation in both IT operations and modern development practices.
             </p>
           </div>
 
