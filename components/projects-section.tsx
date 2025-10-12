@@ -7,6 +7,21 @@ import { ExternalLink, Github, Database, MessageSquare, FileText, Instagram, Tru
 export function ProjectsSection() {
   const projects = [
     {
+      title: "Medical Center",
+      description:
+        "Provide a comprehensive backend system for managing medical center operations, including patient records, appointments, staff management, and Attendance tracking by integration with biometric Device.",
+      icon: Database,
+      technologies: ["Node.js", "Express.js", "JWT", "RESTful APIs", "MySQL"],
+      features: [
+        "Authintication & Authorization",
+        "Access Based on Roles",
+        "Scalable architecture",
+        "Clean code principles",
+        "Demo Admin: admin@medical.com / admin123"
+      ],
+      link: { github: "#", demo: "https://medical-system-beta.vercel.app/" },
+    },
+    {
       title: "Portfolio Builder API",
       description:
         "Backend system for full-stack portfolio website with single endpoint profile output and comprehensive Swagger documentation for easy API integration.",
