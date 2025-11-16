@@ -15,7 +15,7 @@ export function HeroSection() {
 
   const downloadCV = () => {
     window.open(
-      "https://drive.google.com/file/d/1cWyrHJ06mVTSY4UDf4vE6i-75S73-zcY/view?usp=sharing",
+      "https://drive.google.com/file/d/1rp6UmSF01brs3Vrg-RrD5ILIqy_subk3/view?usp=sharing",
       "_blank",
       "noopener,noreferrer"
     )
