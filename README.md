@@ -60,7 +60,7 @@ Engineer with **4+ years** bridging enterprise IT infrastructure and backend sof
 
 ## 🏗️ Featured Projects
 
-### 💰 Finance Management SaaS
+### 💰 Finance Management System
 > Double-entry accounting engine with payroll, asset lifecycle & multi-tenant billing
 
 - 💳 **Idempotent payment APIs** — prevents duplicate transactions, enables full reconciliation trails
