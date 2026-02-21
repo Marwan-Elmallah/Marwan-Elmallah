@@ -130,18 +130,6 @@ Engineer with **4+ years** bridging enterprise IT infrastructure and backend sof
 
 ---
 
-## 📈 GitHub Stats
-
-<div align="center">
-
-![Marwan's GitHub Stats](https://github-readme-stats.vercel.app/api?username=Marwan-Elmallah&show_icons=true&theme=dark&title_color=C9A84C&icon_color=C9A84C&text_color=E8E8E8&bg_color=0A1628&border_color=C9A84C&hide_border=false)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Marwan-Elmallah&layout=compact&theme=dark&title_color=C9A84C&text_color=E8E8E8&bg_color=0A1628&border_color=C9A84C)
-
-</div>
-
----
-
 ## 💼 Experience Highlights
 
 | Period | Role | Company | Location |
