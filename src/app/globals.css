@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ============================================
+   MOBILE RESPONSIVE STYLES
+   ============================================ */
+
+/* Tablet and below (768px) */
+@media (max-width: 768px) {
+  /* Navigation */
+  .nav-desktop {
+    display: none !important;
+  }
+  
+  .hamburger {
+    display: flex !important;
+  }
+  
+  .mobile-menu {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    z-index: 99;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+  
+  /* Grids */
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .hero-cta {
+    flex-direction: column !important;
+  }
+  
+  /* About Section */
+  .about-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  
+  /* Stats */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  
+  /* Contact */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+  
+  /* Section padding */
+  .section-padding {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
+/* Small mobile devices (480px) */
+@media (max-width: 480px) {
+  /* Skills - single column on very small screens */
+  .skills-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Hero title adjustments */
+  .hero-title {
+    font-size: 2.5rem !important;
+  }
+  
+  /* Stats - single column */
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Form - single column */
+  .form-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Button full width on mobile */
+  .btn-gold, 
+  .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  /* Quick connect buttons */
+  .quick-connect {
+    flex-direction: column !important;
+  }
+  
+  .quick-connect .btn-outline {
+    width: 100%;
+  }
+}
+
+/* Extra small devices (320px) */
+@media (max-width: 320px) {
+  .hero-title {
+    font-size: 2rem !important;
+  }
+  
+  .section-title {
+    font-size: 1.5rem !important;
+  }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 500px) and (orientation: landscape) {
+  #hero {
+    min-height: auto;
+    padding-top: 100px;
+    padding-bottom: 60px;
+  }
+}
+
+/* Touch-friendly improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Larger touch targets */
+  .btn-gold,
+  .btn-outline {
+    padding: 14px 28px;
+  }
+  
+  /* Remove hover effects on touch devices */
+  .card-hover:hover {
+    transform: none;
+  }
+}
