@@ -10,7 +10,7 @@
 ```
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marwan-elmallah)
-[![Portfolio](https://img.shields.io/badge/Portfolio-C9A84C?style=for-the-badge&logo=vercel&logoColor=black)](https://marwan-elmallah.github.io/Own_Portfolio)
+[![Portfolio](https://img.shields.io/badge/Portfolio-C9A84C?style=for-the-badge&logo=vercel&logoColor=black)](https://marwanelmallah.vercel.app)
 [![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:eng.marwanelmallah@gmail.com)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/971588120178)
 
