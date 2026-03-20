@@ -165,7 +165,7 @@ I'm open to backend engineering roles, technical consulting, and collaboration o
 | 📧 Email | [eng.marwanelmallah@gmail.com](mailto:eng.marwanelmallah@gmail.com) |
 | 📱 WhatsApp | [+971 588120178](https://wa.me/971588120178) |
 | 💼 LinkedIn | [linkedin.com/in/marwan-elmallah](https://www.linkedin.com/in/marwan-elmallah) |
-| 🌐 Portfolio | [marwan-elmallah.github.io/Own_Portfolio](https://marwan-elmallah.github.io/Own_Portfolio) |
+| 🌐 Portfolio | [https://marwanelmallah.vercel.app](https://marwanelmallah.vercel.app/) |
 
 </div>
 
