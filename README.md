@@ -3,8 +3,8 @@
 ```
 ╔══════════════════════════════════════════════════════════╗
 ║                                                          ║
-║            MARWAN ELMALLAH                               ║
-║            Technical Support Engineer · Backend Dev      ║
+║                   MARWAN ELMALLAH                        ║
+║      Technical Support Engineer · Backend Engineer       ║
 ║                                                          ║
 ╚══════════════════════════════════════════════════════════╝
 ```
