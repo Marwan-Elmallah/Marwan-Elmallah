@@ -36,12 +36,21 @@ Engineer with **4+ years** bridging enterprise IT infrastructure and backend sof
 ### Backend Development
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
+![GraphQL](https://img.shields.io/badge/GraphQL-E10098?style=flat-square&logo=graphql&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
+![Redis](https://img.shields.io/badge/Redis-DC382D?style=flat-square&logo=redis&logoColor=white)
+![BullMQ](https://img.shields.io/badge/BullMQ-FF4545?style=flat-square&logo=bull&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white)
 ![REST API](https://img.shields.io/badge/REST_API-FF6C37?style=flat-square&logo=postman&logoColor=white)
 ![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=flat-square&logo=socket.io&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+
+### LMS & E-Learning
+![Moodle](https://img.shields.io/badge/Moodle-F98012?style=flat-square&logo=moodle&logoColor=white)
+![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
 
 ### Cloud & DevOps
 ![AWS](https://img.shields.io/badge/AWS-232F3E?style=flat-square&logo=amazonaws&logoColor=white)
@@ -91,7 +100,16 @@ Engineer with **4+ years** bridging enterprise IT infrastructure and backend sof
 - 🔄 Session lifecycle management: `scheduled → in-progress → completed` with doctor assignment
 - 📁 Multer-based image uploads (signatures/documents) · Heroku-ready deployment
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-C9A84C?style=flat-square&logo=vercel&logoColor=black)](https://fatema-center.com)
+
+---
+
+### 🎓 Moodle LMS Platform
+> Full-cycle Moodle administration, development & integration — from deployment to custom plugins
+
+- ⚙️ **Platform Administration** — server setup, configuration tuning, plugin management & user lifecycle
+- 🎨 **Theme Development** — custom Moodle themes aligned with branding requirements
+- 🔌 **Plugin Development** — custom PHP plugins extending core LMS functionality
+- 🔗 **API & SSO Integration** — REST API integration and Single Sign-On workflows for seamless auth
 
 ---
 
@@ -135,7 +153,8 @@ Engineer with **4+ years** bridging enterprise IT infrastructure and backend sof
 | Period | Role | Company | Location |
 |--------|------|---------|----------|
 | Nov 2025 – Present | Backend Engineer *(Part-time)* | EVO Smart Control | 🇦🇪 UAE |
-| Mar 2025 – Present | Technical Support Engineer | Bayanat Smart Systems | 🇦🇪 Ras Al Khaimah |
+| May 2026 – Present | Senior Technical Support Engineer | Bayanat Smart Systems | 🇦🇪 Ras Al Khaimah |
+| Mar 2025 – May 2026 | Technical Support Engineer | Bayanat Smart Systems | 🇦🇪 Ras Al Khaimah |
 | Feb 2024 – Aug 2024 | Backend Engineer *(Remote)* | Smart Serve | 🇯🇴 Jordan |
 | Nov 2020 – Jan 2025 | Technical Support Engineer | Telecom Egypt | 🇪🇬 Alexandria |
 
