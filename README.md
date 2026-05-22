@@ -22,7 +22,7 @@
 
 Engineer with **4+ years** bridging enterprise IT infrastructure and backend software development. I architect production-ready SaaS platforms for **healthcare & fintech** while keeping enterprise systems at peak reliability through Tier 2/3 support, networking, and automation.
 
-- 🔭 Currently working as **Technical Support Engineer @ Bayanat Smart Systems** (UAE) and **Backend Engineer @ EVO Smart Control** (part-time)
+- 🔭 Currently working as **Senior Technical Support Engineer @ Bayanat Smart Systems** (UAE) and **Backend Engineer @ EVO Smart Control** (part-time)
 - 🛠️ Building secure, multi-tenant REST APIs for medical and finance management platforms
 - 🌐 CCNA-level networking — from fiber-optic deployments to router/switch configuration
 - 🤖 Automation advocate — Excel/VBA tools that cut manual reporting time by 40%
