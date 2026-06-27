@@ -152,8 +152,8 @@ Engineer with **4+ years** bridging enterprise IT infrastructure and backend sof
 
 | Period | Role | Company | Location |
 |--------|------|---------|----------|
-| Nov 2025 – Present | Backend Engineer *(Part-time)* | EVO Smart Control | 🇦🇪 UAE |
 | May 2026 – Present | Senior Technical Support Engineer | Bayanat Smart Systems | 🇦🇪 Ras Al Khaimah |
+| Nov 2025 – Present | Backend Engineer *(Part-time)* | EVO Smart Control | 🇦🇪 UAE |
 | Mar 2025 – May 2026 | Technical Support Engineer | Bayanat Smart Systems | 🇦🇪 Ras Al Khaimah |
 | Feb 2024 – Aug 2024 | Backend Engineer *(Remote)* | Smart Serve | 🇯🇴 Jordan |
 | Nov 2020 – Jan 2025 | Technical Support Engineer | Telecom Egypt | 🇪🇬 Alexandria |
