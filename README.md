@@ -89,7 +89,7 @@ Engineer with **4+ years** bridging enterprise IT infrastructure and backend sof
 - 📋 Centralized audit trail middleware — full CRUD & auth event logging for compliance
 - 🛡️ Cloudflare WAF (OWASP Top 10) · Docker containerized · Zero-downtime DNS migration
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-C9A84C?style=flat-square&logo=vercel&logoColor=black)](https://medical.evosmart.co)
+[![Live Demo](https://img.shields.io/badge/Live_Demo-C9A84C?style=flat-square&logo=vercel&logoColor=black)](https://gomedical.evosmart.co)
 
 ---
 
