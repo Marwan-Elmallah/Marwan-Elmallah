@@ -68,7 +68,7 @@ const DATA = {
     {
       category: "Networking & Security",
       icon: "🌐",
-      items: ["CCNA-Level Networking", "Fiber Optic · ONT Config", "Router/Switch Setup", "OWASP Top 10", "RBAC", "Audit Logging", "WAF Rules"],
+      items: ["CCNA-Level Networking", "Fiber Optic · ONT Config", "Router/Switch Setup", "RBAC", "Audit Logging", "WAF Rules"],
     },
   ],
 
