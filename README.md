@@ -4,7 +4,7 @@
                                 ╔══════════════════════════════════════════════════════════╗
                                 ║                                                          ║
                                 ║                   MARWAN ELMALLAH                        ║
-                                ║      Technical Support Engineer · Backend Engineer       ║
+                                ║   Senior Technical Support Engineer · Backend Engineer   ║
                                 ║                                                          ║
                                 ╚══════════════════════════════════════════════════════════╝
 ```
