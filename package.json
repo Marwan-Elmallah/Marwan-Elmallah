@@ -1,12 +1,36 @@
 {
-  "name": "my-portfolio",
-  "version": "0.1.0",
+  "name": "marwan-elmallah-portfolio",
+  "version": "1.0.0",
   "private": true,
+  "description": "Personal portfolio of Marwan Elmallah — Senior Technical Support Engineer & Backend Engineer. Built with Next.js, React, TypeScript & Tailwind CSS.",
+  "keywords": [
+    "portfolio",
+    "nextjs",
+    "react",
+    "typescript",
+    "tailwindcss",
+    "framer-motion",
+    "marwan-elmallah",
+    "backend-engineer",
+    "technical-support"
+  ],
+  "author": {
+    "name": "Marwan Elmallah",
+    "email": "eng.marwanelmallah@gmail.com",
+    "url": "https://marwanelmallah.vercel.app"
+  },
+  "homepage": "https://marwanelmallah.vercel.app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marwan-Elmallah/Marwan-Elmallah.git"
+  },
+  "license": "MIT",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "preview": "next start"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
