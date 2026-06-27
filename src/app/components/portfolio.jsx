@@ -740,7 +740,7 @@ export default function Portfolio() {
         {/* ── FOOTER ── */}
         <footer style={{ borderTop: `1px solid ${t.border}`, padding: "1.8rem 2rem", textAlign: "center" }}>
           <p style={{ fontFamily: "'Source Sans 3', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", color: t.textSubtle, textTransform: "uppercase" }}>
-            © 2025 Marwan Elmallah · Senior Technical Support Engineer & Backend Developer · UAE
+            © 2025 Marwan Elmallah · Senior Technical Support Engineer & Backend Engineer · UAE
           </p>
         </footer>
 
