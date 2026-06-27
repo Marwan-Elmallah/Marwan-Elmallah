@@ -17,7 +17,7 @@ try {
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 const DATA = {
   name: "Marwan Elmallah",
-  title: "Senior Technical Support Engineer & Backend Developer",
+  title: "Senior Technical Support Engineer & Backend Engineer",
   tagline: "I build production-ready SaaS backends and keep enterprise systems running — from fiber-optic deployments to multi-tenant REST APIs.",
   about: [
     "Electronics & Communications Engineering graduate with 4+ years spanning two disciplines: enterprise IT infrastructure and backend SaaS development. I keep mission-critical systems reliable for 100+ users at Bayanat Smart Systems while architecting secure, multi-tenant platforms for healthcare and fintech at EVO Smart Control.",
