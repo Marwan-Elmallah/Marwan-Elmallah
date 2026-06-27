@@ -30,6 +30,7 @@ const DATA = {
   github: "https://github.com/marwan-elmallah",
   portfolio: "https://marwanelmallah.vercel.app",
   whatsapp: "https://wa.me/971588120178",
+  cvUrl: "/Marwan_Elmallah_CV.pdf",
 
   stats: [
     { value: "4+", label: "Years Experience" },
@@ -298,7 +299,13 @@ const IconWhatsApp = () => (
   </svg>
 );
 
-// ─── FADE IN ──────────────────────────────────────────────────────────────────
+const IconDownload = () => (
+  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="7 10 12 15 17 10" />
+    <line x1="12" y1="15" x2="12" y2="3" />
+  </svg>
+);
 const FadeIn = ({ children, delay = 0, className = "" }) => {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -473,6 +480,9 @@ export default function Portfolio() {
               <div className="hero-cta" style={{ display: "flex", gap: "0.9rem", flexWrap: "wrap", alignItems: "center" }}>
                 <button className="btn-gold" onClick={() => scrollTo("contact")}>Get In Touch</button>
                 <button className="btn-outline" onClick={() => scrollTo("projects")}>View Projects</button>
+                <a href={DATA.cvUrl} download="Marwan_Elmallah_CV.pdf" className="btn-outline" style={{ color: t.gold, borderColor: t.gold }}>
+                  <IconDownload /> Download CV
+                </a>
                 <a href={DATA.whatsapp} target="_blank" rel="noreferrer" className="btn-outline" style={{ color: "#25D366", borderColor: "#25D366" }}>
                   <IconWhatsApp /> WhatsApp
                 </a>
@@ -698,6 +708,9 @@ export default function Portfolio() {
                 </div>
                 <p style={{ fontFamily: "'Source Sans 3', sans-serif", fontSize: "0.65rem", letterSpacing: "0.2em", textTransform: "uppercase", color: t.gold, fontWeight: 700, marginBottom: "0.9rem" }}>Quick Connect</p>
                 <div style={{ display: "flex", gap: "0.65rem", flexWrap: "wrap" }}>
+                  <a href={DATA.cvUrl} download="Marwan_Elmallah_CV.pdf" className="btn-gold" style={{ display: "inline-flex", alignItems: "center", gap: "5px", textDecoration: "none" }}>
+                    <IconDownload /> Download CV
+                  </a>
                   <a href={DATA.whatsapp} target="_blank" rel="noreferrer" className="btn-outline" style={{ color: "#25D366", borderColor: "#25D366" }}><IconWhatsApp /> WhatsApp</a>
                   <a href={DATA.linkedin} target="_blank" rel="noreferrer" className="btn-outline">LinkedIn</a>
                   <a href={DATA.github} target="_blank" rel="noreferrer" className="btn-outline"><IconGithub /> GitHub</a>
