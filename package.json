@@ -2,7 +2,7 @@
   "name": "marwan-elmallah-portfolio",
   "version": "1.0.0",
   "private": true,
-  "description": "Personal portfolio of Marwan Elmallah — Senior Technical Support Engineer & Backend Engineer. Built with Next.js, React, TypeScript & Tailwind CSS.",
+  "description": "Personal portfolio of Marwan Elmallah — Customer Delivery & IT Coordination Specialist and Backend Engineer in Dubai, UAE. Built with Next.js, React, TypeScript & Tailwind CSS.",
   "keywords": [
     "portfolio",
     "nextjs",
@@ -11,15 +11,19 @@
     "tailwindcss",
     "framer-motion",
     "marwan-elmallah",
-    "backend-engineer",
-    "technical-support"
+    "marwanelmallah",
+    "backend-engineer-dubai",
+    "customer-delivery-specialist",
+    "it-coordination-uae",
+    "bim-vdc-saas",
+    "moodle-developer"
   ],
   "author": {
     "name": "Marwan Elmallah",
     "email": "me@marwanelmallah.com",
-    "url": "https://marwanelmallah.vercel.app"
+    "url": "https://marwanelmallah.com"
   },
-  "homepage": "https://marwanelmallah.vercel.app",
+  "homepage": "https://marwanelmallah.com",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Marwan-Elmallah/Marwan-Elmallah.git"

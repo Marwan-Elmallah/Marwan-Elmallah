@@ -17,7 +17,7 @@
 ```
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marwan-elmallah)
-[![Portfolio](https://img.shields.io/badge/Portfolio-C9A84C?style=for-the-badge&logo=vercel&logoColor=black)](https://marwanelmallah.vercel.app)
+[![Portfolio](https://img.shields.io/badge/Portfolio-C9A84C?style=for-the-badge&logo=vercel&logoColor=black)](https://marwanelmallah.com)
 [![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:me@marwanelmallah.com)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/971588120178)
 
@@ -240,7 +240,7 @@ I'm open to customer delivery / IT coordination roles, backend engineering, LMS/
 | 📧 Email | [me@marwanelmallah.com](mailto:me@marwanelmallah.com) |
 | 📱 WhatsApp | [+971 588120178](https://wa.me/971588120178) |
 | 💼 LinkedIn | [linkedin.com/in/marwan-elmallah](https://www.linkedin.com/in/marwan-elmallah) |
-| 🌐 Portfolio | [marwanelmallah.vercel.app](https://marwanelmallah.vercel.app/) |
+| 🌐 Portfolio | [marwanelmallah.com](https://marwanelmallah.com/) |
 
 </div>
 

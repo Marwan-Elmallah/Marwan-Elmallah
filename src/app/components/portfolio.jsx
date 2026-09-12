@@ -28,7 +28,7 @@ const DATA = {
   location: "United Arab Emirates",
   linkedin: "https://www.linkedin.com/in/marwan-elmallah",
   github: "https://github.com/marwan-elmallah",
-  portfolio: "https://marwanelmallah.vercel.app",
+  portfolio: "https://marwanelmallah.com",
   whatsapp: "https://wa.me/971588120178",
   cvUrl: "/Marwan_Elmallah_CV.pdf",
 
@@ -470,7 +470,7 @@ export default function Portfolio() {
 
           <div style={{ ...s.section, paddingTop: "130px", paddingBottom: "80px", width: "100%" }}>
             <FadeIn>
-              <p style={{ ...s.eyebrow, fontSize: "0.72rem" }}>Portfolio · 2025 — UAE</p>
+              <p style={{ ...s.eyebrow, fontSize: "0.72rem" }}>Portfolio · 2026 — Dubai, UAE</p>
             </FadeIn>
             <FadeIn delay={0.08}>
               <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: "clamp(3rem, 8vw, 6rem)", fontWeight: 900, lineHeight: 1.0, marginBottom: "1.2rem", letterSpacing: "-0.025em" }}>
@@ -755,7 +755,7 @@ export default function Portfolio() {
         {/* ── FOOTER ── */}
         <footer style={{ borderTop: `1px solid ${t.border}`, padding: "1.8rem 2rem", textAlign: "center" }}>
           <p style={{ fontFamily: "'Source Sans 3', sans-serif", fontSize: "0.7rem", letterSpacing: "0.15em", color: t.textSubtle, textTransform: "uppercase" }}>
-            © 2025 Marwan Elmallah · Senior Technical Support Engineer & Backend Engineer · UAE
+            © 2026 Marwan Elmallah · Customer Delivery & IT Coordination Specialist · Backend Engineer · Dubai, UAE
           </p>
         </footer>
 
