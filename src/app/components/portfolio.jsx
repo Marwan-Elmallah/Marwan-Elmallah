@@ -23,7 +23,7 @@ const DATA = {
     "Electronics & Communications Engineering graduate with 4+ years spanning two disciplines: enterprise IT infrastructure and backend SaaS development. I keep mission-critical systems reliable for 100+ users at Bayanat Smart Systems while architecting secure, multi-tenant platforms for healthcare and fintech at EVO Smart Control.",
     "My edge is system-level thinking. Understanding infrastructure from the silicon up — fiber-optic ONT deployments, IoT device integration, DNS migrations, Cloudflare WAF — makes me a sharper backend engineer and a faster incident responder than most."
   ],
-  email: "eng.marwanelmallah@gmail.com",
+  email: "me@marwanelmallah.com",
   phone: "+971 588120178",
   location: "United Arab Emirates",
   linkedin: "https://www.linkedin.com/in/marwan-elmallah",
@@ -74,11 +74,26 @@ const DATA = {
 
   experience: [
     {
+      role: "Customer Delivery & IT Coordination Specialist",
+      company: "IPS Energy ME FZCO",
+      location: "Dubai, UAE",
+      period: "Sep 2026 – Present",
+      color: "#2E6DA4",
+      bullets: [
+        "Primary point of contact between customer IT teams and internal delivery/implementation teams across energy sector project rollouts.",
+        "Coordinate and enable secure access to client environments including VPN, jump servers, network access, and credentials management.",
+        "Lead weekly coordination meetings with customer IT stakeholders to track requests, changes, and dependencies — ensuring clear communication to internal teams.",
+        "Act as first-line support for IT-related issues in client environments, focusing on connectivity, access, and interface resolution.",
+        "Monitor system access, availability, and readiness during both project and operational phases, coordinating security upgrades in line with customer IT policies.",
+        "Collaborate with IT, product, and delivery teams to configure and test hardware, networking software, and operating systems supporting the IPS Company Group's information systems.",
+      ],
+    },
+    {
       role: "Senior Technical Support Engineer",
       badge: "Promoted",
       company: "Bayanat Smart Systems",
       location: "Ras Al Khaimah, UAE",
-      period: "May 2026 – Present",
+      period: "May 2026 – Sep 2026",
       color: "#C9A84C",
       bullets: [
         "Promoted to Senior TSE with expanded oversight scope — managing enterprise infrastructure, IoT integrations, and UAT leadership across client deployments.",
@@ -104,7 +119,7 @@ const DATA = {
       role: "Backend Engineer (Part-time)",
       company: "EVO Smart Control",
       location: "UAE",
-      period: "Nov 2025 – Present",
+      period: "Nov 2025 – Sep 2026",
       color: "#C9A84C",
       bullets: [
         "Sole backend engineer — designed Medical Management SaaS from scratch: three-tier RBAC (admin/reception/doctor), audit trail middleware, and real-time SSE notifications.",

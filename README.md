@@ -1,24 +1,24 @@
 <div align="center">
 
 ```
-╔══════════════════════════════════════════════════════════════════╗
-║                                                                  ║
-║   ███╗   ███╗ █████╗ ██████╗ ██╗    ██╗ █████╗ ███╗   ██╗        ║
-║   ████╗ ████║██╔══██╗██╔══██╗██║    ██║██╔══██╗████╗  ██║        ║
-║   ██╔████╔██║███████║██████╔╝██║ █╗ ██║███████║██╔██╗ ██║        ║
-║   ██║╚██╔╝██║██╔══██║██╔══██╗██║███╗██║██╔══██║██║╚██╗██║        ║
-║   ██║ ╚═╝ ██║██║  ██║██║  ██║╚███╔███╔╝██║  ██║██║ ╚████║        ║
-║   ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═══╝        ║
-║                      E L M A L L A H                             ║
-║                                                                  ║
-║        Senior Technical Support Engineer · Backend Engineer      ║
-║              Healthcare SaaS · Fintech · IoT · LMS               ║
-╚══════════════════════════════════════════════════════════════════╝
+                    ╔══════════════════════════════════════════════════════════════════╗
+                    ║                                                                  ║
+                    ║   ███╗   ███╗ █████╗ ██████╗ ██╗    ██╗ █████╗ ███╗   ██╗        ║
+                    ║   ████╗ ████║██╔══██╗██╔══██╗██║    ██║██╔══██╗████╗  ██║        ║
+                    ║   ██╔████╔██║███████║██████╔╝██║ █╗ ██║███████║██╔██╗ ██║        ║
+                    ║   ██║╚██╔╝██║██╔══██║██╔══██╗██║███╗██║██╔══██║██║╚██╗██║        ║
+                    ║   ██║ ╚═╝ ██║██║  ██║██║  ██║╚███╔███╔╝██║  ██║██║ ╚████║        ║
+                    ║   ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝  ╚═══╝        ║
+                    ║                      E L M A L L A H                             ║
+                    ║                                                                  ║
+                    ║        Customer Delivery & IT Coordination · Backend             ║
+                    ║              Healthcare SaaS · Fintech · IoT · LMS               ║
+                    ╚══════════════════════════════════════════════════════════════════╝
 ```
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/marwan-elmallah)
 [![Portfolio](https://img.shields.io/badge/Portfolio-C9A84C?style=for-the-badge&logo=vercel&logoColor=black)](https://marwanelmallah.vercel.app)
-[![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:eng.marwanelmallah@gmail.com)
+[![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:me@marwanelmallah.com)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/971588120178)
 
 </div>
@@ -27,16 +27,17 @@
 
 ## 👋 About Me
 
-Engineer with **4+ years** bridging enterprise IT infrastructure and backend software development across Egypt and the UAE. I architect production-ready multi-tenant SaaS platforms for **healthcare and fintech**, while keeping enterprise systems at peak reliability through Tier 2/3 support, IoT integration, networking, and automation.
+Engineer with **4+ years** bridging enterprise delivery, IT infrastructure, and backend software development across Egypt and the UAE. I lead customer onboarding and multi-stakeholder coordination for BIM/VDC SaaS at **IPS Energy ME**, deliver 98% SLA enterprise support, and architect production-ready multi-tenant backends for **healthcare and fintech**.
 
-- 🔭 **Senior Technical Support Engineer @ Bayanat Smart Systems** (Ras Al Khaimah, UAE) — promoted May 2026
+- 💼 **Customer Delivery & IT Coordination Specialist @ IPS Energy ME FZCO** (Dubai, UAE) — Sep 2026 – Present · BIM/VDC SaaS (BIM OS)
+- 🔭 **Senior Technical Support Engineer @ Bayanat Smart Systems** (Ras Al Khaimah, UAE) — May – Sep 2026 (promoted)
 - 🛠️ **Backend Engineer @ EVO Smart Control** (UAE) — sole backend engineer across Medical and Finance SaaS platforms
 - 🎓 **Moodle Developer** — administration, custom PHP plugin development, theming, REST API & SSO integration
 - 📡 **IoT Integrator** — Teltonika GPS trackers + ZKTeco biometric devices wired into enterprise backend profiles
 - 🤖 **Automation advocate** — Excel/VBA tooling that cut manual reporting time by **40%**
 - 🌐 CCNA-level networking: fiber-optic deployments, ONT configuration, router/switch setup, 200+ installations
 - 🏛️ **GRA-accredited** in Vehicle Tracking (UAE General Regulatory Authority)
-- 📍 Based in **United Arab Emirates** · Bilingual: **Arabic** (Native) · **English** (Proficient)
+- 📍 Based in **Dubai, United Arab Emirates** · Bilingual: **Arabic** (Native) · **English** (Proficient)
 
 ---
 
@@ -47,8 +48,12 @@ Engineer with **4+ years** bridging enterprise IT infrastructure and backend sof
 ![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![REST API](https://img.shields.io/badge/REST_API-FF6C37?style=flat-square&logo=postman&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
 ![GraphQL](https://img.shields.io/badge/GraphQL-E10098?style=flat-square&logo=graphql&logoColor=white)
+![SSE](https://img.shields.io/badge/SSE-FF6C37?style=flat-square&logo=eventstore&logoColor=white)
+
+### Databases & Caching
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white)
 ![Sequelize](https://img.shields.io/badge/Sequelize-52B0E7?style=flat-square&logo=sequelize&logoColor=white)
 ![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat-square&logo=mongodb&logoColor=white)
@@ -56,29 +61,42 @@ Engineer with **4+ years** bridging enterprise IT infrastructure and backend sof
 ![BullMQ](https://img.shields.io/badge/BullMQ-FF4545?style=flat-square&logo=bull&logoColor=white)
 ![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=flat-square&logo=socket.io&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-000000?style=flat-square&logo=jsonwebtokens&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
+![Multi-Tenant](https://img.shields.io/badge/Multi--Tenant_DB-4479A1?style=flat-square&logo=mysql&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 
-### LMS & E-Learning
+### LMS & Moodle
 ![Moodle](https://img.shields.io/badge/Moodle-F98012?style=flat-square&logo=moodle&logoColor=white)
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=php&logoColor=white)
+![REST API](https://img.shields.io/badge/REST_API-FF6C37?style=flat-square&logo=postman&logoColor=white)
+![SSO](https://img.shields.io/badge/SSO_OAuth-4285F4?style=flat-square&logo=auth0&logoColor=white)
 
 ### Cloud & DevOps
 ![AWS EC2](https://img.shields.io/badge/AWS_EC2-FF9900?style=flat-square&logo=amazonaws&logoColor=white)
 ![AWS S3](https://img.shields.io/badge/AWS_S3-569A31?style=flat-square&logo=amazons3&logoColor=white)
+![AWS IAM](https://img.shields.io/badge/AWS_IAM-DD344C?style=flat-square&logo=amazonaws&logoColor=white)
 ![Cloudflare](https://img.shields.io/badge/Cloudflare_WAF-F38020?style=flat-square&logo=cloudflare&logoColor=white)
 ![DigitalOcean](https://img.shields.io/badge/DigitalOcean-0080FF?style=flat-square&logo=digitalocean&logoColor=white)
 ![Render](https://img.shields.io/badge/Render-46E3B7?style=flat-square&logo=render&logoColor=black)
-![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
+![cPanel](https://img.shields.io/badge/cPanel-FF6C2C?style=flat-square&logo=cpanel&logoColor=white)
 ![n8n](https://img.shields.io/badge/n8n-EA4B71?style=flat-square&logo=n8n&logoColor=white)
 ![PM2](https://img.shields.io/badge/PM2-2B037A?style=flat-square&logo=pm2&logoColor=white)
 
-### IT & IoT Operations
+### IT Operations & IoT
 ![Linux](https://img.shields.io/badge/Linux-FCC624?style=flat-square&logo=linux&logoColor=black)
 ![Windows](https://img.shields.io/badge/Windows_Server-0078D4?style=flat-square&logo=windows&logoColor=white)
 ![Active Directory](https://img.shields.io/badge/Active_Directory-0078D4?style=flat-square&logo=microsoft&logoColor=white)
+![SCCM](https://img.shields.io/badge/SCCM_IVANTI_JAMF-0078D4?style=flat-square&logo=microsoft&logoColor=white)
 ![Teltonika](https://img.shields.io/badge/Teltonika_GPS-003865?style=flat-square&logoColor=white)
 ![ZKTeco](https://img.shields.io/badge/ZKTeco_Biometrics-E63946?style=flat-square&logoColor=white)
+![Excel VBA](https://img.shields.io/badge/Excel_VBA-217346?style=flat-square&logo=microsoftexcel&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white)
+
+### Networking & Security
+![CCNA](https://img.shields.io/badge/CCNA_Networking-1BA0D7?style=flat-square&logo=cisco&logoColor=white)
+![Fiber ONT](https://img.shields.io/badge/Fiber_ONT-FF6C37?style=flat-square&logoColor=white)
+![RBAC](https://img.shields.io/badge/RBAC-000000?style=flat-square&logo=jsonwebtokens&logoColor=white)
+![Audit Logging](https://img.shields.io/badge/Audit_Logging-C9A84C?style=flat-square&logoColor=black)
 
 ---
 
@@ -138,9 +156,10 @@ Engineer with **4+ years** bridging enterprise IT infrastructure and backend sof
 ---
 
 ### 💬 Real-Time Chat Group App
-> Full-stack bidirectional chat application with group room management
+> Bidirectional chat application with group room management, online presence, and typing indicators
 
 - ⚡ Socket.io-powered real-time messaging with room management
+- 🟢 Online presence tracking with typing indicators
 - 🗄️ MongoDB for flexible message storage and user profiles
 
 [![Repo](https://img.shields.io/badge/Backend_Repo-181717?style=flat-square&logo=github&logoColor=white)](https://github.com/Marwan-Elmallah/Chat-Group-Back)
@@ -175,8 +194,9 @@ Engineer with **4+ years** bridging enterprise IT infrastructure and backend sof
 
 | Period | Role | Company | Location |
 |--------|------|---------|----------|
-| May 2026 – Present | **Senior** Technical Support Engineer | Bayanat Smart Systems | 🇦🇪 Ras Al Khaimah |
-| Nov 2025 – Present | Backend Engineer *(Part-time)* | EVO Smart Control | 🇦🇪 UAE |
+| Sep 2026 – Present | **Customer Delivery & IT Coordination Specialist** | IPS Energy ME FZCO | 🇦🇪 Dubai |
+| May 2026 – Sep 2026 | **Senior** Technical Support Engineer | Bayanat Smart Systems | 🇦🇪 Ras Al Khaimah |
+| Nov 2025 – Sep 2026 | Backend Engineer *(Part-time)* | EVO Smart Control | 🇦🇪 UAE |
 | Mar 2025 – May 2026 | Technical Support Engineer | Bayanat Smart Systems | 🇦🇪 Ras Al Khaimah |
 | Feb 2024 – Aug 2024 | Backend Engineer *(Remote)* | Smart Serve | 🇯🇴 Jordan |
 | Nov 2020 – Jan 2025 | Technical Support Engineer | Telecom Egypt | 🇪🇬 Alexandria |
@@ -186,11 +206,12 @@ Engineer with **4+ years** bridging enterprise IT infrastructure and backend sof
 ## 🎯 Key Achievements
 
 ```
+💼  Customer Delivery @ IPS Energy (2026) →  BIM-OS rollout, onboarding & IT governance
 🏅  Promoted to Senior TSE (May 2026)    →  Expanded oversight role at Bayanat Smart Systems
 📉  Reduced system downtime by 30%       →  Proactive root-cause analysis at Bayanat
 📊  Cut reporting time by 40%            →  Custom Excel/VBA automation tools
 ✅  98% SLA compliance                   →  Tier 2/3 support for 100+ enterprise users
-📡  85% first-call resolution rate       →  Advanced network troubleshooting at Telecom Egypt
+📡  85% first-contact resolution rate    →  Advanced network troubleshooting at Telecom Egypt
 ⚡  15+ REST APIs in 2 weeks             →  MVP backend delivery at EVO Smart Control
 🌐  200+ fiber-optic installations       →  ONT & static IP deployments nationwide
 🏛️  GRA Vehicle Tracking Accreditation  →  UAE General Regulatory Authority certified
@@ -210,13 +231,13 @@ Engineer with **4+ years** bridging enterprise IT infrastructure and backend sof
 
 ## 📫 Get In Touch
 
-I'm open to backend engineering roles, LMS/Moodle development, technical consulting, and SaaS project collaboration.
+I'm open to customer delivery / IT coordination roles, backend engineering, LMS/Moodle development, technical consulting, and SaaS project collaboration.
 
 <div align="center">
 
 | Channel | Link |
 |---------|------|
-| 📧 Email | [eng.marwanelmallah@gmail.com](mailto:eng.marwanelmallah@gmail.com) |
+| 📧 Email | [me@marwanelmallah.com](mailto:me@marwanelmallah.com) |
 | 📱 WhatsApp | [+971 588120178](https://wa.me/971588120178) |
 | 💼 LinkedIn | [linkedin.com/in/marwan-elmallah](https://www.linkedin.com/in/marwan-elmallah) |
 | 🌐 Portfolio | [marwanelmallah.vercel.app](https://marwanelmallah.vercel.app/) |
