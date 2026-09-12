@@ -76,11 +76,20 @@ export const metadata: Metadata = {
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     locale: "en_AE",
+    images: [
+      {
+        url: "/icons/icon-512x512.png",
+        width: 512,
+        height: 512,
+        alt: "Marwan Elmallah — ME monogram logo",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
+    images: ["/icons/icon-512x512.png"],
   },
   category: "technology",
   icons: {
@@ -101,6 +110,7 @@ const personJsonLd = {
   "@type": "Person",
   name: "Marwan Elmallah",
   url: SITE_URL,
+  image: `${SITE_URL}/icons/icon-512x512.png`,
   email: "me@marwanelmallah.com",
   jobTitle: "Customer Delivery & IT Coordination Specialist",
   address: {
