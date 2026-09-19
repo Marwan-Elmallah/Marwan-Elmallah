@@ -136,10 +136,10 @@ export default function Portfolio() {
     e.preventDefault();
     setFormStatus("sending");
     try {
-      await emailjs.send("service_duyg6a8", "template_y5t6pe9", {
+      await emailjs.send(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, {
         from_name: formData.name, from_email: formData.email,
         subject: formData.subject, message: formData.message,
-      }, "NgXBqz22eksGa97Ra");
+      }, process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
       setFormStatus("success");
       setFormData({ name: "", email: "", subject: "", message: "" });
     } catch { setFormStatus("error"); }
